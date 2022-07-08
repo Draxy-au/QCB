@@ -1,0 +1,29 @@
+@use "../../styles/colours";
+
+$card_image_background: colours.$grey-vlight;
+$card_text_background: colours.$sage-light;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+    max-height: 20rem;
+    background-color: $card_image_background;
+  }
+
+  .text {
+    height: 20rem;
+    max-height: 20rem;
+    font-size: 1.6rem;
+    padding: 2rem;
+    background-color: $card_text_background;
+  }
+}

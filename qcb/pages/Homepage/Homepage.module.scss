@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 5rem;
+
+  .carouselArea {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    width: 100%;
+  }
+
+  .cardArea {
+    width: 100%;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+  }
+}

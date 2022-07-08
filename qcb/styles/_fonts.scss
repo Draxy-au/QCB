@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Capture";
+  src: url("/fonts/capture-regular.woff2") format("woff2"),
+    url("/fonts/capture-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gothic";
+  src: url("/fonts/gothic-regular.woff2") format("woff2"),
+    url("/fonts/gothic-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gothic Bold";
+  src: url("/fonts/gothic-bold.woff2") format("woff2"),
+    url("/fonts/gothic-bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
