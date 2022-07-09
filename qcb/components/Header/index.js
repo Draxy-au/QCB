@@ -29,13 +29,13 @@ export default function index() {
             alt="Instagram"
           />
         </a>
-        <a
+        {/* <a
           target="_blank"
           href="https://twitter.com/"
           rel="noopener noreferrer"
         >
           <Image height={"30px"} width={"30px"} src={twitter} alt="Twitter" />
-        </a>
+        </a> */}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import QCBLogo from "../../images/qcb-logo.svg";
 
 export default function index() {
   return (
-    <nav>
+    <nav className={styles.navarea}>
       <div className={styles.qcb_logo}>
         <Image
           src={QCBLogo}

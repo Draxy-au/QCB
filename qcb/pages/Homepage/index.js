@@ -14,7 +14,7 @@ const slides = [slide_1, slide_2, slide_3];
 
 export default function index() {
   return (
-    <div>
+    <>
       <Navbar />
       <div className={styles.content}>
         <div className={styles.carouselArea}>
@@ -49,6 +49,6 @@ export default function index() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
