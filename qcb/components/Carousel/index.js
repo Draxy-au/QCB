@@ -1,77 +1,83 @@
-import Image from "next/image";
-
+import { useState, useEffect, useRef } from "react";
 import styles from "./Carousel.module.scss";
 
-import img1 from "../../images/temp/1.jpg";
-import img2 from "../../images/temp/2.jpg";
-import img3 from "../../images/temp/3.jpg";
+import CarouselItem from "./CarouselItem";
+import CarouselControls from "./CarouselControls";
+import CarouselIndicators from "./CarouselIndicators";
 
-export default function index() {
+export default function index({
+  slides,
+  interval = 4000,
+  controls = false,
+  indicators = false,
+  autoPlay = true,
+  width = 900,
+}) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideInterval = useRef();
+
+  const prev = () => {
+    startSlideTimer();
+    const index = currentSlide > 0 ? currentSlide - 1 : slides.length - 1;
+    setCurrentSlide(index);
+  };
+  const next = () => {
+    startSlideTimer();
+    const index = currentSlide < slides.length - 1 ? currentSlide + 1 : 0;
+    setCurrentSlide(index);
+  };
+  const switchIndex = (index) => {
+    startSlideTimer();
+    setCurrentSlide(index);
+  };
+
+  const startSlideTimer = () => {
+    if (autoPlay) {
+      stopSlideTimer();
+      slideInterval.current = setInterval(() => {
+        setCurrentSlide((currentSlide) =>
+          currentSlide < slides.length - 1 ? currentSlide + 1 : 0
+        );
+      }, interval);
+    }
+  };
+  const stopSlideTimer = () => {
+    if (autoPlay && slideInterval.current) {
+      clearInterval(slideInterval.current);
+    }
+  };
+
+  useEffect(() => {
+    startSlideTimer();
+
+    return () => stopSlideTimer();
+  }, [startSlideTimer]);
+
   return (
     <>
-      <div className={styles.carousel_container}>
-        <div
-          id="carouselExampleIndicators"
-          className="carousel slide"
-          data-bs-ride="true"
-        >
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <Image src={img1} className="d-block w-100" alt="..." />
-            </div>
-            <div className="carousel-item">
-              <Image src={img2} className="d-block w-100" alt="..." />
-            </div>
-            <div className="carousel-item">
-              <Image src={img3} className="d-block w-100" alt="..." />
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev"
+      <div className={styles.container}>
+        <div className={styles.carousel} style={{ maxWidth: width }}>
+          <div
+            className={styles.carousel_inner}
+            style={{ transform: `translateX(${-currentSlide * 100}%)` }}
           >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+            {slides.map((slide, index) => (
+              <CarouselItem
+                key={index}
+                slide={slide}
+                stopSlide={stopSlideTimer}
+                startSlide={startSlideTimer}
+              />
+            ))}
+          </div>
+          {indicators && (
+            <CarouselIndicators
+              slides={slides}
+              currentIndex={currentSlide}
+              switchIndex={switchIndex}
+            />
+          )}
+          {controls && <CarouselControls prev={prev} next={next} />}
         </div>
       </div>
     </>

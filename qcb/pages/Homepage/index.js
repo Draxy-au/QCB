@@ -7,13 +7,25 @@ import styles from "./Homepage.module.scss";
 
 import img1 from "../../images/temp/card_1.jpg";
 
+import slide_1 from "../../assets/slides/slide-1.png";
+import slide_2 from "../../assets/slides/slide-2.png";
+import slide_3 from "../../assets/slides/slide-3.png";
+const slides = [slide_1, slide_2, slide_3];
+
 export default function index() {
   return (
     <div>
       <Navbar />
       <div className={styles.content}>
         <div className={styles.carouselArea}>
-          <Carousel />
+          <Carousel
+            slides={slides}
+            indicators
+            controls
+            interval={4000}
+            autoPlay={true}
+            width={1100}
+          />
         </div>
         <div className={styles.cardArea}>
           <Card
