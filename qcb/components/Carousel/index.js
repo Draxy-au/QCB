@@ -5,7 +5,7 @@ import CarouselItem from "./CarouselItem";
 import CarouselControls from "./CarouselControls";
 import CarouselIndicators from "./CarouselIndicators";
 
-export default function index({
+export default function Carousel({
   slides,
   interval = 4000,
   controls = false,
@@ -51,7 +51,7 @@ export default function index({
     startSlideTimer();
 
     return () => stopSlideTimer();
-  }, [startSlideTimer]);
+  }, []);
 
   return (
     <>
