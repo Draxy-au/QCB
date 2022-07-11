@@ -14,7 +14,7 @@ $website_background: colours.$grey_dark;
   .page {
     display: flex;
     flex-direction: column;
-    width: 1400px;
+    max-width: 1400px;
     background-color: white;
   }
 

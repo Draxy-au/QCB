@@ -16,7 +16,9 @@ $nav_dropdown_color: colours.$white;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding-left: 15rem;
+    gap: 1rem;
+    padding-left: 10%;
+
     .logo_text {
       font-family: "Capture";
       font-size: 5rem;
