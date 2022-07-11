@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import QCBLogo from "../../images/qcb-logo.svg";
 import hamburger_menu from "../../assets/icons/hamburger_menu.png";
 
-export default function index() {
+export default function Navbar() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [showAboutUsMenu, setShowAboutUsMenu] = useState(false);
 
