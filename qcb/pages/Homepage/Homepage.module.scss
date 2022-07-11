@@ -4,13 +4,17 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-
   gap: 5rem;
 
   .carouselArea {
-    margin-top: 10rem;
-    margin-bottom: 10rem;
     width: 100%;
+  }
+
+  @media (min-width: 40em) {
+    .carouselArea {
+      margin-top: 10rem;
+      margin-bottom: 10rem;
+    }
   }
 
   .cardArea {
@@ -21,6 +25,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10rem;
+    gap: 5rem;
   }
 }
