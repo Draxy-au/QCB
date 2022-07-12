@@ -1,8 +1,10 @@
 @use "../../styles/colours";
 @use "../../styles/screen";
+@use "../../styles/fonts";
 
 $nav_colour: colours.$black;
 
+$nav_font: "Gothic";
 $nav_topBorderColour: colours.$sage;
 $nav_background: colours.$white;
 $nav_dropdown_background: colours.$grey_vlight;
@@ -119,6 +121,7 @@ $nav_dropdown_color: colours.$white;
       align-items: flex-start;
       gap: 2rem;
       font-size: 2rem;
+      font-family: $nav_font;
       padding-bottom: 4rem;
 
       /* Dropdown Button */
@@ -126,11 +129,12 @@ $nav_dropdown_color: colours.$white;
         background-color: $nav_background;
         color: $nav_colour;
         font-size: 2rem;
+        font-family: $nav_font;
         border: none;
       }
 
       .selected {
-        border-top: 5px solid $nav_dropdown_highlight_light;
+        border-bottom: 5px solid $nav_dropdown_highlight_light;
         color: $nav_dropdown_highlight;
       }
 
