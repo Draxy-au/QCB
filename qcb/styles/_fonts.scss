@@ -1,3 +1,5 @@
+@use "./colours";
+
 @font-face {
   font-family: "Capture";
   src: url("/fonts/capture-regular.woff2") format("woff2"),
@@ -20,4 +22,25 @@
     url("/fonts/gothic-bold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+.title_1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Gothic Bold";
+  font-size: 2em;
+  background-color: colours.$burntorange;
+  line-height: 1.75em;
+  padding: 0 2%;
+}
+
+.normal_text {
+  font-family: "Gothic";
+  font-size: 1em;
+  padding: 1em 2%;
+
+  p {
+    margin-bottom: 1em;
+  }
 }
