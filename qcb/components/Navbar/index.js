@@ -41,9 +41,13 @@ export default function Navbar({ current }) {
       </div>
       {showHamburgerMenu && (
         <div className={styles.h_menu_items}>
-          <div className={styles.h_menu_item}>Home</div>
+          <Link href={"/"}>
+            <div className={styles.h_menu_item}>Home</div>
+          </Link>
           <div className={`${styles.h_menu_item} ${styles.h_menu_dropdown}`}>
-            <span>About Us</span>
+            <Link href={"/About"}>
+              <span>About Us</span>
+            </Link>
             <button onClick={toggleAboutUsMenu}>&#9660;</button>
           </div>
           {showAboutUsMenu && (
@@ -53,8 +57,12 @@ export default function Navbar({ current }) {
               <div className={styles.aboutus_menu_item}>Contact Us</div>
             </div>
           )}
-          <div className={styles.h_menu_item}>Members</div>
-          <div className={styles.h_menu_item}>Events</div>
+          <Link href={"/Members"}>
+            <div className={styles.h_menu_item}>Members</div>
+          </Link>
+          <Link href={"/Events"}>
+            <div className={styles.h_menu_item}>Events</div>
+          </Link>
         </div>
       )}
       <div className={styles.menu_items}>
