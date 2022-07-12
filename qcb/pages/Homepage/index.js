@@ -12,10 +12,10 @@ import slide_2 from "../../assets/slides/slide-2.png";
 import slide_3 from "../../assets/slides/slide-3.png";
 const slides = [slide_1, slide_2, slide_3];
 
-export default function index() {
+export default function Homepage() {
   return (
-    <>
-      <Navbar />
+    <div className={styles.homepage_container}>
+      <Navbar current={"home"} />
       <div className={styles.content}>
         <div className={styles.carouselArea}>
           <Carousel
@@ -49,6 +49,6 @@ export default function index() {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }

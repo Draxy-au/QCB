@@ -1,3 +1,12 @@
+@use "../../styles/colours";
+
+$page_background: colours.$white;
+
+.homepage_container {
+  width: 100%;
+  background-color: $page_background;
+}
+
 .content {
   display: flex;
   flex-direction: column;

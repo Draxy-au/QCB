@@ -11,13 +11,6 @@ $website_background: colours.$grey_dark;
   min-height: 100vh;
   background-color: $website_background;
 
-  .page {
-    display: flex;
-    flex-direction: column;
-    max-width: 1400px;
-    background-color: white;
-  }
-
   .main {
     display: flex;
     flex-direction: column;

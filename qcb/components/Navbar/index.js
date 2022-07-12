@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import QCBLogo from "../../images/qcb-logo.svg";
 import hamburger_menu from "../../assets/icons/hamburger_menu.png";
 
-export default function Navbar() {
+export default function Navbar({ current }) {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [showAboutUsMenu, setShowAboutUsMenu] = useState(false);
 
@@ -59,12 +59,26 @@ export default function Navbar() {
       )}
       <div className={styles.menu_items}>
         <span>
-          <Link href={"/"}>Home</Link>
+          <Link href={"/"}>
+            <button
+              className={`${styles.dropbtn} ${
+                current == "home" ? styles.selected : ""
+              }`}
+            >
+              Home
+            </button>
+          </Link>
         </span>
         <span>
           <div className={styles.dropdown}>
-            <Link href={"/about"}>
-              <button className={styles.dropbtn}>About Us</button>
+            <Link href={"/About"}>
+              <button
+                className={`${styles.dropbtn} ${
+                  current == "about_us" ? styles.selected : ""
+                }`}
+              >
+                About Us
+              </button>
             </Link>
             <div className={styles.dropdown_content}>
               <a href="#">Our Committee</a>
@@ -74,10 +88,26 @@ export default function Navbar() {
           </div>
         </span>
         <span>
-          <Link href={"/"}>Members</Link>
+          <Link href={"/Members"}>
+            <button
+              className={`${styles.dropbtn} ${
+                current == "members" ? styles.selected : ""
+              }`}
+            >
+              Members
+            </button>
+          </Link>
         </span>
         <span>
-          <Link href={"/"}>Events</Link>
+          <Link href={"/Events"}>
+            <button
+              className={`${styles.dropbtn} ${
+                current == "events" ? styles.selected : ""
+              }`}
+            >
+              Events
+            </button>
+          </Link>
         </span>
       </div>
     </nav>
