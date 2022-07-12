@@ -1,5 +1,9 @@
 import styles from "./styles.module.scss";
 
-export const MenuItem = () => {
-  return <div>MenuItem</div>;
+export const MenuItem = ({ menu_name, dropdown = false }) => {
+  return (
+    <div>
+      {!dropdown && <div className={styles.h_menu_item}>{menu_name}</div>}
+    </div>
+  );
 };
