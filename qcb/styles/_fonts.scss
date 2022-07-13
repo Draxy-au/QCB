@@ -24,6 +24,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Koho";
+  src: url("/fonts/koho-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Koho Bold";
+  src: url("/fonts/koho-bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BowlbyOne";
+  src: url("/fonts/bowlbyone.woff") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .title_1 {
   display: flex;
   justify-content: flex-start;

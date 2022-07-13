@@ -4,7 +4,8 @@
 
 $nav_colour: colours.$black;
 
-$nav_font: "Gothic";
+$logo_font: "BowlbyOne";
+$nav_font: "Koho";
 
 $nav_topBorderColour: colours.$sage;
 $nav_background: colours.$white;
@@ -24,13 +25,13 @@ $nav_dropdown_color: colours.$white;
     gap: 1rem;
 
     .logo_text {
-      font-family: "Capture";
+      font-family: $logo_font;
       font-size: 3rem;
     }
 
     @media (min-width: 40em) {
       .logo_text {
-        font-family: "Capture";
+        font-family: $logo_font;
         font-size: 5rem;
       }
     }

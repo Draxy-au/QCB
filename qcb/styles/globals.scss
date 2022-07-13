@@ -2,13 +2,13 @@
 @use "../styles/colours";
 
 $website_background: colours.$grey_dark;
+$website_font: "Koho";
 
 html,
 body {
   width: 100%;
   background-color: $website_background;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: $website_font;
   font-size: 10px;
 }
 
