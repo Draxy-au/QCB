@@ -30,6 +30,9 @@ export const BioCard = ({ photo, name, description, flip = false }) => {
             <div className={`${styles.normal_text} ${styles.description}`}>
               {description}
             </div>
+            <div className={styles.seperator_bar}>
+              <hr />
+            </div>
           </div>
         </>
       )}
