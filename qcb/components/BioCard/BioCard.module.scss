@@ -55,6 +55,11 @@
   .seperator_bar {
     width: 40%;
   }
+
+  .seperator_bar_flip {
+    width: 40%;
+    display: none;
+  }
 }
 
 @media (min-width: 40em) {
@@ -84,6 +89,10 @@
         justify-content: flex-end;
         text-align: right;
       }
+    }
+
+    .seperator_bar_flip {
+      display: block;
     }
   }
 }
