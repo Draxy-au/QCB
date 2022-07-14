@@ -1,0 +1,19 @@
+.hamburger_menu {
+  .hamburger_icon {
+    width: 100%;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .menu_slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: aqua;
+  }
+}

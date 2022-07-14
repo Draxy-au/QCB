@@ -1,0 +1,13 @@
+.menu_container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+
+  .menu_link {
+    cursor: pointer;
+  }
+}

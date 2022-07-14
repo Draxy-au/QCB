@@ -1,10 +1,10 @@
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar2";
 import styles from "./About.module.scss";
 
 export default function index() {
   return (
     <div className={styles.about_container}>
-      <Navbar current={"about_us"} />
+      <Navbar current={"About Us"} />
       <div className={styles.title_1}>About Us</div>
       <div className={styles.normal_text}>
         <p>

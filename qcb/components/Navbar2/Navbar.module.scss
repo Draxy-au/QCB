@@ -1,0 +1,47 @@
+@use "../../styles/fonts";
+
+$logo_font: "BowlbyOne";
+
+.navarea {
+  max-width: 100%;
+
+  .qcb_logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 1rem;
+
+    .logo_text {
+      font-family: $logo_font;
+      font-size: 3rem;
+    }
+
+    @media (min-width: 40em) {
+      .logo_text {
+        font-family: $logo_font;
+        font-size: 5rem;
+      }
+    }
+  }
+
+  .menus_area {
+    width: 100%;
+
+    .standard_menu {
+      display: none;
+    }
+    .hamburger_menu {
+      display: block;
+    }
+
+    @media (min-width: 40em) {
+      .standard_menu {
+        display: block;
+      }
+      .hamburger_menu {
+        display: none;
+      }
+    }
+  }
+}

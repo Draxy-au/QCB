@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Navbar from "../../components/Navbar";
+// import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar2";
 import Carousel from "../../components/Carousel";
 import Card from "../../components/Card";
 
@@ -15,7 +16,7 @@ const slides = [slide_1, slide_2, slide_3];
 export default function Homepage() {
   return (
     <div className={styles.homepage_container}>
-      <Navbar current={"home"} />
+      <Navbar current="Home" />
       <div className={styles.content}>
         <div className={styles.carouselArea}>
           <Carousel

@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar2";
 import styles from "./Events.module.scss";
 
 export default function Events() {

@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar2";
 import styles from "./Members.module.scss";
 
 export default function Members() {
