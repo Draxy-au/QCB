@@ -5,8 +5,8 @@ const menu_data = [
     link: "/About",
     dropdown: true,
     submenu: [
-      { title: "Our Committee", link: "/About/Committee" },
-      { title: "Contact Us", link: "/About/Contact" },
+      { title: "Our Committee", link: "/About/OurCommittee" },
+      { title: "Contact Us", link: "/About/ContactUs" },
     ],
   },
   { title: "Members", link: "/Members", dropdown: false },

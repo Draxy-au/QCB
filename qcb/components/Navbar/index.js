@@ -29,6 +29,7 @@ export default function Navbar({ current }) {
         />
         <span className={styles.logo_text}>QLD Camping Bears</span>
       </div>
+
       <div className={styles.h_menu}>
         <button className={styles.hamburger_menu} onClick={toggleHamburgerMenu}>
           <Image
