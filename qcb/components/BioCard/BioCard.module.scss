@@ -53,6 +53,7 @@
   }
 
   .seperator_bar {
+    display: block;
     width: 40%;
   }
 
@@ -91,8 +92,12 @@
       }
     }
 
+    .seperator_bar {
+      display: none;
+    }
+
     .seperator_bar_flip {
-      display: block;
+      display: none;
     }
   }
 }
