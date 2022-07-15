@@ -6,10 +6,18 @@ const menu_data = [
     dropdown: true,
     submenu: [
       { title: "Our Committee", link: "/About/OurCommittee" },
-      { title: "Contact Us", link: "/About/ContactUs" },
+      { title: "Contact Info", link: "/About/ContactInfo" },
     ],
   },
-  { title: "Members", link: "/Members", dropdown: false },
+  {
+    title: "Members",
+    link: "/Members",
+    dropdown: true,
+    submenu: [
+      { title: "Member Benefits", link: "/Members" },
+      { title: "Contact QCB", link: "/Members/ContactQCB" },
+    ],
+  },
   { title: "Events", link: "/Events", dropdown: false },
 ];
 
