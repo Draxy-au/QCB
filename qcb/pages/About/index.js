@@ -29,7 +29,7 @@ export default function index() {
       <div className={styles.normal_text}>
         <p>
           We here at QCB have a zero tolerance policy for anybody who brings a
-          attitude that belong firmly in the past.
+          attitude that belongs firmly in the past.
         </p>
         <p>
           Any vilification of any person by age, gender, orientation, size,
