@@ -43,8 +43,8 @@ export default function index() {
           respectful at all times.
         </p>
         <p>
-          Under no circumstances are you to enter another persons property (
-          entering into someone’s tent, van, vehicle or cabin) without the
+          Under no circumstances are you to enter another persons property
+          (entering into someone’s tent, van, vehicle or cabin) without the
           owners permission.
         </p>
         <p>
