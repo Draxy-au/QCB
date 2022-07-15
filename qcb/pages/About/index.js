@@ -28,10 +28,8 @@ export default function index() {
       <div className={styles.title_1}>We Are One Family</div>
       <div className={styles.normal_text}>
         <p>
-          There have been instances in the past where attitudes have been shown
-          which do not align with what we strive to be, attitudes which belong
-          firmly in the past. We aim to move beyond these and forward to a more
-          open, friendly and inviting community.
+          We here at QCB have a zero tolerance policy for anybody who brings a
+          attitude that belong firmly in the past.
         </p>
         <p>
           Any vilification of any person by age, gender, orientation, size,
@@ -40,9 +38,14 @@ export default function index() {
         </p>
         <p>
           Equality, acceptance and kindness should be the norm, not the
-          exception. As a group, we are a minority within a minority, we should
-          never be putting down others, but raising everyone up to a higher
-          standard and being respectful at all times.
+          exception. As a group, we are a minority, we should never be putting
+          down others, but raising everyone up to a higher standard and being
+          respectful at all times.
+        </p>
+        <p>
+          Under no circumstances are you to enter another persons property (
+          entering into someone’s tent, van, vehicle or cabin) without the
+          owners permission.
         </p>
         <p>
           The Qld Camping Bears committee, as always, reserves the right to
