@@ -28,7 +28,7 @@ export default function index() {
       <div className={styles.title_1}>We Are One Family</div>
       <div className={styles.normal_text}>
         <p>
-          We here at QCB have a zero tolerance policy for anybody who brings a
+          We here at QCB have a zero tolerance policy for anybody who brings an
           attitude that belongs firmly in the past.
         </p>
         <p>
