@@ -1,0 +1,38 @@
+[
+  {
+    "id": "qcb-hat",
+    "name": "QCB Trucker Hat",
+    "price": 30,
+    "image": "images/products/qcb-hat.png"
+  },
+  {
+    "id": "qcb-hat-claw",
+    "name": "Claw Trucker Hat",
+    "price": 30,
+    "image": "images/products/qcb-hat-claw.png"
+  },
+  {
+    "id": "qcb-towel",
+    "name": "QCB Embroided Towel",
+    "price": 25,
+    "image": "images/products/qcb-towel.png"
+  },
+  {
+    "id": "qcb-picnic-blanket",
+    "name": "QCB Picnic Blanket",
+    "price": 45,
+    "image": "images/products/qcb-picnic-blanket.png"
+  },
+  {
+    "id": "qcb-flag",
+    "name": "QCB Flag",
+    "price": 15,
+    "image": "images/products/qcb-flag.png"
+  },
+  {
+    "id": "qcb-pin",
+    "name": "QCB Pin",
+    "price": 5,
+    "image": "images/products/qcb-pin.png"
+  }
+]

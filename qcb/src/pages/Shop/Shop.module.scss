@@ -1,0 +1,75 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$page_background: colours.$white;
+
+$product_background: colours.$grey_vlight;
+$product_name: colours.$burntorange;
+$product_price: colours.$black;
+$button_colour: colours.$burntorange_light;
+$button_font: "Koho Bold";
+$button_font_colour: colours.$white;
+
+.shoppage_container {
+  width: 100%;
+  background-color: $page_background;
+  padding: 0 0 2rem 0;
+
+  .products_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 0;
+
+    .product {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background-color: $product_background;
+
+      .product_image {
+        background-color: $page_background;
+      }
+
+      .product_name {
+        width: 100%;
+        font-family: $button_font;
+        color: $product_name;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .product_price {
+        width: 100%;
+        font-family: $button_font;
+        color: $product_price;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      .product_add {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+
+        button {
+          border: none;
+          background-color: $button_colour;
+          padding: 1rem 2rem;
+          margin: 1rem 0;
+          border-radius: 0.5rem;
+          font-family: $button_font;
+          color: $button_font_colour;
+        }
+      }
+    }
+  }
+}
