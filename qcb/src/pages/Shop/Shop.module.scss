@@ -3,10 +3,12 @@
 
 $page_background: colours.$white;
 
+$cart_font: "Koho Bold";
+$cart_font_colour: colours.$burntorange_dark;
 $product_background: colours.$grey_vlight;
 $product_name: colours.$burntorange;
 $product_price: colours.$black;
-$button_colour: colours.$burntorange_light;
+$button_colour: colours.$sage;
 $button_font: "Koho Bold";
 $button_font_colour: colours.$white;
 
@@ -23,6 +25,18 @@ $button_font_colour: colours.$white;
     justify-content: center;
     gap: 2rem;
     padding: 2rem 0;
+
+    .cart {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 2rem;
+      gap: 1rem;
+      font-family: $cart_font;
+      font-size: 1.6rem;
+      color: $cart_font_colour;
+    }
 
     .product {
       width: 25%;
