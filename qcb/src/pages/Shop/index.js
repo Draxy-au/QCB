@@ -17,7 +17,7 @@ export default function Shop({ home }) {
       <Navbar current={"Shop"} />
 
       <div className={styles.hero}>
-        <Link href={heroLink || ""}>
+        <Link href={heroLink}>
           <a>
             <div className={styles.heroContent}>
               <h2>{heroTitle}</h2>
