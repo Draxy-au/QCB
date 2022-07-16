@@ -2,36 +2,46 @@ import Navbar from "@components/Navbar";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./Products.module.scss";
+import Head from "next/head";
 
 export default function Products({ product }) {
   return (
-    <div className={styles.productspage_container}>
-      <Navbar current={"Shop"} />
-      <div className={styles.productWrapper}>
-        <div className={styles.productImage}>
-          <img
-            src={product.image.url}
-            height={350}
-            width={350}
-            alt={product.name}
-          />
-        </div>
-        <div className={styles.productContent}>
-          <h1>{product.name}</h1>
-          <div
-            className={styles.productDescription}
-            dangerouslySetInnerHTML={{
-              __html: product.description.html,
-            }}
-          />
+    <>
+      <Head key={product.slug}>
+        <title>{product.name}</title>
+        <meta
+          name="description"
+          content={`Find ${product.name} at QCB Shop.`}
+        />
+      </Head>
+      <div className={styles.productspage_container}>
+        <Navbar current={"Shop"} />
+        <div className={styles.productWrapper}>
+          <div className={styles.productImage}>
+            <img
+              src={product.image.url}
+              height={350}
+              width={350}
+              alt={product.name}
+            />
+          </div>
+          <div className={styles.productContent}>
+            <h1>{product.name}</h1>
+            <div
+              className={styles.productDescription}
+              dangerouslySetInnerHTML={{
+                __html: product.description.html,
+              }}
+            />
 
-          <p className={styles.productPrice}>${product.price}</p>
-          <p className={styles.productBuy}>
-            <button>Add to Cart</button>
-          </p>
+            <p className={styles.productPrice}>${product.price}</p>
+            <p className={styles.productBuy}>
+              <button>Add to Cart</button>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -40,19 +40,23 @@ export default function Shop({ home, products }) {
         </div>
         {products?.map((product) => (
           <div key={product.slug} className={styles.product}>
-            <div className={styles.product_image}>
-              <img
-                src={product.image.url}
-                height={250}
-                width={250}
-                alt={product.name}
-              />
-            </div>
-            <div className={styles.product_name}>{product.name}</div>
-            <div className={styles.product_price}>${product.price}</div>
-            <div className={styles.product_add}>
-              <button>Add to Cart</button>
-            </div>
+            <Link href={`/Shop/products/${product.slug}`}>
+              <a>
+                <div className={styles.product_image}>
+                  <img
+                    src={product.image.url}
+                    height={250}
+                    width={250}
+                    alt={product.name}
+                  />
+                </div>
+                <div className={styles.product_name}>{product.name}</div>
+                <div className={styles.product_price}>${product.price}</div>
+                <div className={styles.product_add}>
+                  <button>Add to Cart</button>
+                </div>
+              </a>
+            </Link>
           </div>
         ))}
       </div>
