@@ -76,27 +76,18 @@ export async function getStaticProps() {
           heroTitle
           name
           slug
-          heroBackground {
-            url
-            width
-            height
-          }
+          heroBackground
         }
         products(first: 6) {
           name
           price
           slug
-          image {
-            height
-            width
-            url
-          }
+          image
         }
       }
     `,
   });
 
-  console.log("Data: ", data);
   const home = data.data.page;
   const products = data.data.products;
 
