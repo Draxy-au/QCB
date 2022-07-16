@@ -5,13 +5,12 @@ import Navbar from "@components/Navbar";
 
 import styles from "./Shop.module.scss";
 
-import products from "@data/products";
-
 import cart_icon from "@assets/icons/cart.svg";
 import Link from "next/link";
 
-export default function Shop({ home }) {
+export default function Shop({ home, products }) {
   const { heroTitle, heroText, heroLink, heroBackground } = home;
+
   return (
     <div className={styles.shoppage_container}>
       <Navbar current={"Shop"} />
@@ -39,11 +38,11 @@ export default function Shop({ home }) {
           Total: $0.00
           <Image height={"30px"} width={"30px"} src={cart_icon} alt="cart" />
         </div>
-        {products?.slice(0, 6).map((product) => (
-          <div key={product.id} className={styles.product}>
+        {products?.map((product) => (
+          <div key={product.slug} className={styles.product}>
             <div className={styles.product_image}>
               <img
-                src={product.image}
+                src={product.image.url}
                 height={250}
                 width={250}
                 alt={product.name}
@@ -83,15 +82,28 @@ export async function getStaticProps() {
             height
           }
         }
+        products(first: 6) {
+          name
+          price
+          slug
+          image {
+            height
+            width
+            url
+          }
+        }
       }
     `,
   });
 
   console.log("Data: ", data);
   const home = data.data.page;
+  const products = data.data.products;
+
   return {
     props: {
       home,
+      products,
     },
   };
 }
