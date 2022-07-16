@@ -5,7 +5,7 @@ import Card from "@components/Card";
 
 import styles from "./Homepage.module.scss";
 
-import img1 from "/public/images/temp_slides/card_1.jpg";
+import img1 from "/public/images/temp/card_1.jpg";
 
 import slide_1 from "@assets/slides/slide-1.png";
 import slide_2 from "@assets/slides/slide-2.png";
