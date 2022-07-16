@@ -1,0 +1,22 @@
+@use "@styles/colours";
+
+$website_background: colours.$grey_dark;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $website_background;
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(100vh - 5rem);
+    width: 100%;
+  }
+}
