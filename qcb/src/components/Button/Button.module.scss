@@ -1,0 +1,16 @@
+.button {
+  font-size: 1rem;
+  color: white;
+  background-color: orange;
+  border: 0;
+  font-weight: bold;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 0.6em 1em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten(orange, 10);
+  }
+}

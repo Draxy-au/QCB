@@ -3,6 +3,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./Products.module.scss";
 import Head from "next/head";
+import Button from "@components/Button";
 
 export default function Products({ product }) {
   return (
@@ -36,7 +37,17 @@ export default function Products({ product }) {
 
             <p className={styles.productPrice}>${product.price}</p>
             <p className={styles.productBuy}>
-              <button>Add to Cart</button>
+              <Button
+                className="snipcart-add-item"
+                data-item-id={product.id}
+                data-item-price={product.price}
+                data-item-description={product.description}
+                data-item-url={`/products/${product.slug}`}
+                data-item-image={product.image.url}
+                data-item-name={product.name}
+              >
+                Add to Cart
+              </Button>
             </p>
           </div>
         </div>
@@ -62,6 +73,7 @@ export async function getStaticProps({ params }) {
           description {
             html
           }
+          slug
         }
       }
     `,
