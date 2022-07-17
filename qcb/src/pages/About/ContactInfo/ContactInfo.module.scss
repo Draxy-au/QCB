@@ -1,0 +1,20 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$page_background: colours.$white;
+
+.contactinfo_page_container {
+  width: 100%;
+  background-color: $page_background;
+}
+
+.svg_color {
+  filter: brightness(0);
+  //filter: saturate(100%);
+  filter: invert(52%);
+  //filter: sepia(35%);
+  //filter: saturate(6353%);
+  //filter: hue-rotate(163deg);
+  //filter: brightness(97%);
+  //filter: contrast(101%);
+}
