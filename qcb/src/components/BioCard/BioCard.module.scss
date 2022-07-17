@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   padding: 2.5% 10%;
+  gap: 2rem;
 
   .photo {
     display: flex;
@@ -21,6 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 
     .name {
       max-width: 90%;
