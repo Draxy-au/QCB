@@ -7,6 +7,7 @@ const menu_data = [
     submenu: [
       { title: "Our Committee", link: "/About/OurCommittee" },
       { title: "Contact Info", link: "/About/ContactInfo" },
+      { title: "Feedback", link: "/About/Feedback" },
     ],
   },
   {
