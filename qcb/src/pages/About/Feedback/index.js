@@ -1,21 +1,48 @@
 import Navbar from "@components/Navbar";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+
 import styles from "./Feedback.module.scss";
 
-export default function Feedback() {
+export default function Feedback({ feedback }) {
   return (
     <div className={styles.feedback_page_container}>
       <Navbar current={"About Us"} />
-      <div>
-        <h1 className="title_1">Feedback</h1>
-      </div>
-      <p className="normal_text">We welcome any and all feedback</p>
-      <p className="normal_text">
-        If you have any group suggestions please email qldcampingbears@gmail.com
-      </p>
-      <p className="normal_text">
-        Please ensure you have you name an best contact number in also so we can
-        phone you to discuss.
-      </p>
+      <div
+        className="pages"
+        dangerouslySetInnerHTML={{
+          __html: feedback.content.html,
+        }}
+      ></div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+    cache: new InMemoryCache(),
+  });
+
+  const data = await client.query({
+    query: gql`
+      query PageFeedback {
+        page(where: { slug: "feedback" }) {
+          id
+          name
+          slug
+          content {
+            html
+          }
+        }
+      }
+    `,
+  });
+
+  const feedback = data.data.page;
+
+  return {
+    props: {
+      feedback,
+    },
+  };
 }
