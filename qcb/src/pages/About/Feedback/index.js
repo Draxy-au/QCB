@@ -12,7 +12,7 @@ export default function Feedback({ feedback }) {
         dangerouslySetInnerHTML={{
           __html: feedback.content.html,
         }}
-      ></div>
+      />
     </div>
   );
 }

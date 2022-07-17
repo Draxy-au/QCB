@@ -11,8 +11,13 @@ export const BioCard = ({ photo, name, description, flip = false }) => {
             <div className={`${styles.title_1} ${styles.name_flip}`}>
               {name}
             </div>
-            <div className={`${styles.normal_text} ${styles.description_flip}`}>
-              {description}
+            <div className={`${styles.description_flip}`}>
+              <div
+                className="pages"
+                dangerouslySetInnerHTML={{
+                  __html: description,
+                }}
+              />
             </div>
             <div className={styles.seperator_bar_flip}>
               <hr />
@@ -30,8 +35,13 @@ export const BioCard = ({ photo, name, description, flip = false }) => {
           </div>
           <div className={styles.info}>
             <div className={`${styles.title_1} ${styles.name}`}>{name}</div>
-            <div className={`${styles.normal_text} ${styles.description}`}>
-              {description}
+            <div className={`${styles.description}`}>
+              <div
+                className="pages"
+                dangerouslySetInnerHTML={{
+                  __html: description,
+                }}
+              />
             </div>
             <div className={styles.seperator_bar}>
               <hr />
