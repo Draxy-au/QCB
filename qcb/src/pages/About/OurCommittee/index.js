@@ -19,7 +19,7 @@ export default function OurCommittee({ bios }) {
               photo={item.image.url}
               name={item.name}
               description={item.content.html}
-              flip={index % 2 == 0 ? false : true}
+              flip={index % 2 == 0 ? false : false} // change to true for alternate flipping
             />
           </div>
         ))}
