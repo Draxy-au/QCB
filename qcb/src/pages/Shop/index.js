@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { useCart } from "react-use-cart";
 
 import Navbar from "@components/Navbar";
 
@@ -6,9 +7,22 @@ import styles from "./Shop.module.scss";
 
 import Link from "next/link";
 import Cart from "@components/Cart";
+import Image from "next/image";
 
 export default function Shop({ home, products }) {
   const { heroTitle, heroText, heroLink, heroBackground } = home;
+
+  const { addItem } = useCart();
+
+  const addToCart = (product) => {
+    const item = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+    };
+
+    addItem(item, 1);
+  };
 
   return (
     <div className={styles.shoppage_container}>
@@ -22,7 +36,7 @@ export default function Shop({ home, products }) {
               <h2>{heroTitle}</h2>
               <p>{heroText}</p>
             </div>
-            <img
+            <Image
               className={styles.heroImage}
               src={heroBackground.url}
               alt={heroTitle}
@@ -39,7 +53,7 @@ export default function Shop({ home, products }) {
             <Link href={`/Shop/products/${product.slug}`}>
               <a>
                 <div className={styles.product_image}>
-                  <img
+                  <Image
                     src={product.image.url}
                     height={250}
                     width={250}
@@ -48,11 +62,11 @@ export default function Shop({ home, products }) {
                 </div>
                 <div className={styles.product_name}>{product.name}</div>
                 <div className={styles.product_price}>${product.price}</div>
-                <div className={styles.product_add}>
-                  <button>Add to Cart</button>
-                </div>
               </a>
             </Link>
+            <div className={styles.product_add}>
+              <button onClick={() => addToCart(product)}>Add to Cart</button>
+            </div>
           </div>
         ))}
       </div>
@@ -79,6 +93,7 @@ export async function getStaticProps() {
           heroBackground
         }
         products(first: 6) {
+          id
           name
           price
           slug

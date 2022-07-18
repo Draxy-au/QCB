@@ -4,6 +4,7 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import "@styles/globals.scss";
 import "@styles/app.scss";
+import { CartProvider } from "react-use-cart";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,9 +18,11 @@ function MyApp({ Component, pageProps }) {
         <div className="header">
           <Header />
         </div>
-        <div className="page">
-          <Component {...pageProps} />
-        </div>
+        <CartProvider>
+          <div className="page">
+            <Component {...pageProps} />
+          </div>
+        </CartProvider>
         <footer>
           <Footer />
         </footer>
