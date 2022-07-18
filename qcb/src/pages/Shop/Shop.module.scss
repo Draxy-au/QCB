@@ -12,9 +12,21 @@ $button_colour: colours.$sage;
 $button_font: "Koho Bold";
 $button_font_colour: colours.$white;
 
+.cart {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5rem;
+  gap: 1rem;
+  font-family: $cart_font;
+  font-size: 1.6rem;
+  color: $cart_font_colour;
+}
+
 .hero {
   position: relative;
-  margin: 4em 0;
+  margin: 1rem 0 2rem 0;
 
   @media (max-width: 720px) {
     margin-top: 0;
@@ -95,18 +107,6 @@ $button_font_colour: colours.$white;
     justify-content: center;
     gap: 2rem;
     padding: 0;
-
-    .cart {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding-right: 1rem;
-      gap: 1rem;
-      font-family: $cart_font;
-      font-size: 1.6rem;
-      color: $cart_font_colour;
-    }
 
     .product {
       width: fit-content;

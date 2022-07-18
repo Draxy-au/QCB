@@ -3,9 +3,24 @@
 
 $page_background: colours.$white;
 
+$cart_font: "Koho Bold";
+$cart_font_colour: colours.$burntorange_dark;
+
 $button_colour: colours.$sage;
 $button_font: "Koho Bold";
 $button_font_colour: colours.$white;
+
+.cart {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5rem;
+  gap: 1rem;
+  font-family: $cart_font;
+  font-size: 1.6rem;
+  color: $cart_font_colour;
+}
 
 .productspage_container {
   width: 100%;

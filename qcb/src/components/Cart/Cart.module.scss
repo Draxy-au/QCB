@@ -1,0 +1,25 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$cart_font: "Koho Bold";
+$cart_font_colour: colours.$burntorange_dark;
+
+.cart {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1rem;
+  margin: 1rem 0;
+  gap: 1rem;
+  font-family: $cart_font;
+  font-size: 1.6rem;
+  color: $cart_font_colour;
+}
+
+@media (min-width: 40em) {
+  .cart {
+    margin: 0;
+    padding-right: 5rem;
+  }
+}

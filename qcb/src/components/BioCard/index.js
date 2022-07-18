@@ -8,8 +8,8 @@ export const BioCard = ({ photo, name, description, flip = false }) => {
       {flip && (
         <>
           <div className={styles.info}>
-            <div className={`${styles.title_1} ${styles.name_flip}`}>
-              {name}
+            <div className={`className="pages" ${styles.name_flip}`}>
+              <h1>{name}</h1>
             </div>
             <div className={`${styles.description_flip}`}>
               <div
@@ -34,7 +34,9 @@ export const BioCard = ({ photo, name, description, flip = false }) => {
             <Image src={photo} alt="" height={300} width={300} />
           </div>
           <div className={styles.info}>
-            <div className={`${styles.title_1} ${styles.name}`}>{name}</div>
+            <div className={`className="pages"  ${styles.name}`}>
+              <h1>{name}</h1>
+            </div>
             <div className={`${styles.description}`}>
               <div
                 className="pages"

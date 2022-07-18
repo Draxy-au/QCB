@@ -1,0 +1,30 @@
+@use "@styles/fonts";
+
+$logo_font: "BowlbyOne";
+
+.qcb_logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1rem;
+  padding-left: 1rem;
+
+  .logo_text {
+    font-family: $logo_font;
+    font-size: 3rem;
+  }
+
+  @media (min-width: 40em) {
+    .logo_text {
+      font-family: $logo_font;
+      font-size: 5rem;
+    }
+  }
+}
+
+@media (min-width: 40em) {
+  .qcb_logo {
+    padding-left: 5rem;
+  }
+}

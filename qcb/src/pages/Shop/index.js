@@ -1,12 +1,11 @@
-import Image from "next/image";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import Navbar from "@components/Navbar";
 
 import styles from "./Shop.module.scss";
 
-import cart_icon from "@assets/icons/cart.svg";
 import Link from "next/link";
+import Cart from "@components/Cart";
 
 export default function Shop({ home, products }) {
   const { heroTitle, heroText, heroLink, heroBackground } = home;
@@ -14,6 +13,7 @@ export default function Shop({ home, products }) {
   return (
     <div className={styles.shoppage_container}>
       <Navbar current={"Shop"} />
+      <Cart total_price={0} />
 
       <div className={styles.hero}>
         <Link href={heroLink}>
@@ -34,10 +34,6 @@ export default function Shop({ home, products }) {
       </div>
 
       <div className={styles.products_container}>
-        <div className={styles.cart}>
-          Total: $0.00
-          <Image height={"30px"} width={"30px"} src={cart_icon} alt="cart" />
-        </div>
         {products?.map((product) => (
           <div key={product.slug} className={styles.product}>
             <Link href={`/Shop/products/${product.slug}`}>

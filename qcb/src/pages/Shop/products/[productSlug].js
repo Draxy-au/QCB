@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "./Products.module.scss";
 import Head from "next/head";
 import Button from "@components/Button";
+import Cart from "@components/Cart";
 
 export default function Products({ product }) {
   return (
@@ -17,6 +18,9 @@ export default function Products({ product }) {
       </Head>
       <div className={styles.productspage_container}>
         <Navbar current={"Shop"} />
+
+        <Cart total_price={0.0} />
+
         <div className={styles.productWrapper}>
           <div className={styles.productImage}>
             <img
