@@ -67,7 +67,6 @@ export async function getStaticProps() {
     `,
   });
 
-  console.log("data", data);
   const cards = data.data.homeCards;
 
   return {
