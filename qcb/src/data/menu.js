@@ -17,6 +17,7 @@ const menu_data = [
     submenu: [
       { title: "Member Benefits", link: "/Members" },
       { title: "Contact QCB", link: "/Members/ContactQCB" },
+      { title: "Member Portal", link: "/Members/Portal" },
     ],
   },
   { title: "Events", link: "/Events", dropdown: false },
