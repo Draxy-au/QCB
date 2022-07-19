@@ -1,12 +1,31 @@
 import Navbar from "@components/Navbar";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { useCart } from "react-use-cart";
 
 import styles from "./Products.module.scss";
 import Head from "next/head";
+import Link from "next/link";
 import Button from "@components/Button";
 import Cart from "@components/Cart";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Products({ product }) {
+  const { addItem, cartTotal } = useCart();
+  const router = useRouter();
+
+  const addToCart = (product) => {
+    const item = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    };
+
+    addItem(item, 1);
+    router.push("/Shop/Cart");
+  };
+
   return (
     <>
       <Head key={product.slug}>
@@ -19,11 +38,15 @@ export default function Products({ product }) {
       <div className={styles.productspage_container}>
         <Navbar current={"Shop"} />
 
-        <Cart total_price={0.0} />
+        <Link href="/Shop/Cart">
+          <a>
+            <Cart total_price={cartTotal} />
+          </a>
+        </Link>
 
         <div className={styles.productWrapper}>
           <div className={styles.productImage}>
-            <img
+            <Image
               src={product.image.url}
               height={350}
               width={350}
@@ -41,17 +64,7 @@ export default function Products({ product }) {
 
             <p className={styles.productPrice}>${product.price}</p>
             <p className={styles.productBuy}>
-              <Button
-              // className="snipcart-add-item"
-              // data-item-id={product.id}
-              // data-item-price={product.price}
-              // data-item-description={product.description}
-              // data-item-url={`/products/${product.slug}`}
-              // data-item-image={product.image.url}
-              // data-item-name={product.name}
-              >
-                Add to Cart
-              </Button>
+              <Button onClick={() => addToCart(product)}>Add to Cart</Button>
             </p>
           </div>
         </div>

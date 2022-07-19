@@ -8,26 +8,34 @@ import styles from "./Shop.module.scss";
 import Link from "next/link";
 import Cart from "@components/Cart";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Shop({ home, products }) {
   const { heroTitle, heroText, heroLink, heroBackground } = home;
 
-  const { addItem } = useCart();
+  const { addItem, cartTotal } = useCart();
+  const router = useRouter();
 
   const addToCart = (product) => {
     const item = {
       id: product.id,
       name: product.name,
       price: product.price,
+      image: product.image,
     };
 
     addItem(item, 1);
+    router.push("/Shop/Cart");
   };
 
   return (
     <div className={styles.shoppage_container}>
       <Navbar current={"Shop"} />
-      <Cart total_price={0} />
+      <Link href="/Shop/Cart">
+        <a>
+          <Cart total_price={cartTotal} />
+        </a>
+      </Link>
 
       <div className={styles.hero}>
         <Link href={heroLink}>
