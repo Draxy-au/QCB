@@ -1,6 +1,7 @@
 import Script from "next/script";
 import Head from "next/head";
 import Header from "@components/Header";
+import Flag from "@components/Flags";
 import Footer from "@components/Footer";
 import "@styles/globals.scss";
 import "@styles/app.scss";
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }) {
         <CartProvider>
           <div className="page">
             <Component {...pageProps} />
+            <Flag />
           </div>
         </CartProvider>
         <footer>
