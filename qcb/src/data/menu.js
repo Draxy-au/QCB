@@ -6,8 +6,7 @@ const menu_data = [
     dropdown: true,
     submenu: [
       { title: "Our Committee", link: "/About/OurCommittee" },
-      { title: "Contact Info", link: "/About/ContactInfo" },
-      { title: "Feedback", link: "/About/Feedback" },
+      { title: "Contact Us", link: "/About/ContactInfo" },
     ],
   },
   {
@@ -20,7 +19,14 @@ const menu_data = [
       { title: "Member Portal", link: "/Members/Portal" },
     ],
   },
-  { title: "Events", link: "/Events", dropdown: false },
+  {
+    title: "Events",
+    link: "/Events",
+    dropdown: true,
+    submenu: [
+      { title: "Camping Essentials", link: "/Events/CampingEssentials" },
+    ],
+  },
   {
     title: "Shop",
     link: "/Shop",

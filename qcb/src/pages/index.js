@@ -9,14 +9,23 @@ import slide_1 from "@assets/slides/slide-1.png";
 import slide_2 from "@assets/slides/slide-2.png";
 import slide_3 from "@assets/slides/slide-3.png";
 import { useEffect, useState } from "react";
-const slides = [slide_1, slide_2, slide_3];
+import Link from "next/link";
 
-export default function Home({ cards }) {
+export default function Home({ cards, slides }) {
   const [cardList, setCardList] = useState(cards);
+  const [slideList, setSlideList] = useState(slides);
+  const [slideImages, setSlideImages] = useState();
 
   useEffect(() => {
     setCardList(cards);
-  }, [cards]);
+    setSlideList(slides);
+  }, [cards, slides]);
+
+  useEffect(() => {
+    if (slideList?.length > 1) {
+      setSlideImages(slideList.map((slide) => slide.image.url));
+    }
+  }, [slideList]);
 
   return (
     <div className={styles.homepage_container}>
@@ -24,22 +33,28 @@ export default function Home({ cards }) {
 
       <div className={styles.content}>
         <div className={styles.carouselArea}>
-          <Carousel
-            slides={slides}
-            indicators
-            controls
-            interval={4000}
-            autoPlay={true}
-            width={1100}
-          />
+          {slideImages && (
+            <Carousel
+              slides={slideImages}
+              indicators
+              controls
+              interval={4000}
+              autoPlay={true}
+              width={1100}
+            />
+          )}
         </div>
         <div className={styles.cardArea}>
           {cardList?.map((card) => (
-            <Card
-              key={card.id}
-              cardImage={card.image.url}
-              text={card.description}
-            />
+            <Link href={card.link} key={card.id}>
+              <a>
+                <Card
+                  key={card.id}
+                  cardImage={card.image.url}
+                  text={card.description}
+                />
+              </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -63,15 +78,25 @@ export async function getStaticProps() {
           description
           link
         }
+        slides {
+          id
+          name
+          image
+          link
+        }
       }
     `,
   });
 
   const cards = data.data.homeCards;
+  const slides = data.data.slides;
+
+  console.log(slides);
 
   return {
     props: {
       cards,
+      slides,
     },
   };
 }
