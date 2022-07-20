@@ -4,9 +4,11 @@ import styles from "./Carousel.module.scss";
 import CarouselItem from "./CarouselItem";
 import CarouselControls from "./CarouselControls";
 import CarouselIndicators from "./CarouselIndicators";
+import Link from "next/link";
 
 export default function Carousel({
   slides,
+  links,
   interval = 4000,
   controls = false,
   indicators = false,
@@ -62,12 +64,16 @@ export default function Carousel({
             style={{ transform: `translateX(${-currentSlide * 100}%)` }}
           >
             {slides.map((slide, index) => (
-              <CarouselItem
-                key={index}
-                slide={slide}
-                stopSlide={stopSlideTimer}
-                startSlide={startSlideTimer}
-              />
+              <Link key={index} href={links[index]}>
+                <a>
+                  <CarouselItem
+                    key={index}
+                    slide={slide}
+                    stopSlide={stopSlideTimer}
+                    startSlide={startSlideTimer}
+                  />
+                </a>
+              </Link>
             ))}
           </div>
           {indicators && (

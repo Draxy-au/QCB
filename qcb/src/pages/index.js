@@ -15,6 +15,7 @@ export default function Home({ cards, slides }) {
   const [cardList, setCardList] = useState(cards);
   const [slideList, setSlideList] = useState(slides);
   const [slideImages, setSlideImages] = useState();
+  const [slideLinks, setSlideLinks] = useState();
 
   useEffect(() => {
     setCardList(cards);
@@ -24,6 +25,7 @@ export default function Home({ cards, slides }) {
   useEffect(() => {
     if (slideList?.length > 1) {
       setSlideImages(slideList.map((slide) => slide.image.url));
+      setSlideLinks(slideList.map((slide) => slide.link));
     }
   }, [slideList]);
 
@@ -36,6 +38,7 @@ export default function Home({ cards, slides }) {
           {slideImages && (
             <Carousel
               slides={slideImages}
+              links={slideLinks}
               indicators
               controls
               interval={4000}
@@ -90,8 +93,6 @@ export async function getStaticProps() {
 
   const cards = data.data.homeCards;
   const slides = data.data.slides;
-
-  console.log(slides);
 
   return {
     props: {
