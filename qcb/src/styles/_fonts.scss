@@ -68,6 +68,7 @@
 
 .pages {
   margin-bottom: 1em;
+  //padding-left: 2rem;
   width: 100%;
 
   h1 {
@@ -89,6 +90,18 @@
 
   a:hover {
     color: colours.$burntorange;
+  }
+
+  ul,
+  ol {
+    padding-left: 4rem;
+    margin-left: 2rem;
+    text-align: left;
+
+    li {
+      font-family: "Koho";
+      font-size: 1.6em;
+    }
   }
 }
 @media (min-width: 40em) {
