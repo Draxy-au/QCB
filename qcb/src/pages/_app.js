@@ -1,4 +1,4 @@
-import Script from "next/script";
+import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import Header from "@components/Header";
 import Flag from "@components/Flags";
@@ -7,7 +7,7 @@ import "@styles/globals.scss";
 import "@styles/app.scss";
 import { CartProvider } from "react-use-cart";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   return (
     <div className="website_content">
       <div className="page_container">
@@ -21,7 +21,9 @@ function MyApp({ Component, pageProps }) {
         </div>
         <CartProvider>
           <div className="page">
-            <Component {...pageProps} />
+            <SessionProvider session={session}>
+              <Component {...pageProps} />
+            </SessionProvider>
             <Flag />
           </div>
         </CartProvider>
