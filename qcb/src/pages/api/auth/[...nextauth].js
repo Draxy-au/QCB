@@ -1,5 +1,6 @@
 import NextAuth from "next-auth/next";
 
+// Providers
 import GooglePrivider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 
