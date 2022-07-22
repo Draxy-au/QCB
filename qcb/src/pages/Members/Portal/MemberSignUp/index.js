@@ -3,11 +3,23 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import Navbar from "@components/Navbar";
 
-import styles from "./MemberSignUp.module.scss";
 import { MemberDetails } from "@components/MemberDetails";
+
+import styles from "./MemberSignUp.module.scss";
+import spinner from "@assets/icons/spinner.gif";
 
 export default function MemberSignUp({ session, member }) {
   const { status } = useSession();
+
+  const loading = status === "loading";
+
+  if (loading) {
+    return (
+      <div>
+        <img src={spinner} alt="loading..." />
+      </div>
+    );
+  }
 
   if (member) {
     return (

@@ -12,12 +12,13 @@ export default function Portal() {
 
   const loading = status === "loading";
 
-  if (loading)
+  if (loading) {
     return (
       <div>
         <img src={spinner} alt="loading..." />
       </div>
     );
+  }
 
   if (session) {
     router.push("/Members/Portal/MemberSignUp");
