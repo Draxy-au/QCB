@@ -1,5 +1,6 @@
 import validateUser from "@util/validateUser";
 import { useEffect, useState } from "react";
+import addMember from "src/db/addMember";
 import styles from "./MemberDetails.module.scss";
 
 export const MemberDetails = ({ email }) => {
@@ -54,8 +55,12 @@ export const MemberDetails = ({ email }) => {
       tc: termsAndConditionsChecked,
     };
     const errors = await validateUser(newUserData);
-    console.log("errors:", errors);
     setFormErrors(errors);
+    if (errors.length < 1) {
+      // Add user to Hygraph (awaiting verification)
+      await addMember(newUserData);
+      alert("New User Added.");
+    }
   };
 
   return (
