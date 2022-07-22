@@ -15,8 +15,7 @@ export default function Portal() {
 
   if (loading) {
     return (
-      <div>
-        <Navbar current={"About Us"} />
+      <div className="spinner">
         <Image priority src={spinner} height={30} width={30} alt="loading..." />
       </div>
     );

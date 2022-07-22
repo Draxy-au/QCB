@@ -16,7 +16,7 @@ export default function MemberSignUp({ session, member }) {
 
   if (loading) {
     return (
-      <div>
+      <div className="spinner">
         <Image src={spinner} height="30" width="30" alt="loading..." />
       </div>
     );
