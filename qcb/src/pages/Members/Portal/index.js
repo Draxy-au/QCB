@@ -4,13 +4,20 @@ import { useRouter } from "next/router";
 
 import styles from "./Portal.module.scss";
 
+import spinner from "@assets/icons/spinner.gif";
+
 export default function Portal() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
   const loading = status === "loading";
 
-  if (loading) return null;
+  if (loading)
+    return (
+      <div>
+        <img src={spinner} alt="loading..." />
+      </div>
+    );
 
   if (session) {
     router.push("/Members/Portal/MemberSignUp");

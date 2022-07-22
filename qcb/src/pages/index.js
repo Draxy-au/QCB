@@ -5,9 +5,6 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./Home.module.scss";
 
-import slide_1 from "@assets/slides/slide-1.png";
-import slide_2 from "@assets/slides/slide-2.png";
-import slide_3 from "@assets/slides/slide-3.png";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
