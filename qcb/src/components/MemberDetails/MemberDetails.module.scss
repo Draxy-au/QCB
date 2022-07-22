@@ -11,9 +11,19 @@ $input_colour: colours.$sage;
 $submit_background: colours.$sage;
 $submit_colour: colours.$white;
 
+$error_colour: colours.$red_light;
+
 .member_details_container {
   width: 100%;
   background-color: $page_background;
+
+  .error {
+    width: 100%;
+    color: $error_colour;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .form {
     width: 100%;
@@ -101,6 +111,10 @@ $submit_colour: colours.$white;
     .submit_button {
       justify-content: flex-start;
       margin-left: 2rem;
+    }
+
+    .error {
+      justify-content: flex-start;
     }
 
     label {

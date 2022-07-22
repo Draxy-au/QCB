@@ -1,3 +1,4 @@
+import validateUser from "@util/validateUser";
 import { useEffect, useState } from "react";
 import styles from "./MemberDetails.module.scss";
 
@@ -18,14 +19,44 @@ export const MemberDetails = ({ email }) => {
   const [eMobile, setEMobile] = useState("");
   const [termsAndConditionsChecked, setTermsAndConditionsChecked] =
     useState(false);
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleAboriginalClick = () =>
     setAboringinalChecked(!aboringinalChecked);
+
   const handleTsiClick = () => setTsiChecked(!tsiChecked);
+
   const handleSsiClick = () => setSsiChecked(!ssiChecked);
 
   const handleTermsAndConditionsClick = () =>
     setTermsAndConditionsChecked(!termsAndConditionsChecked);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const newUserData = {
+      userEmail,
+      userName,
+      admin: false,
+      verified: false,
+      firstName,
+      lastName,
+      suburb,
+      postCode,
+      dob,
+      aboriginal: aboringinalChecked,
+      tsi: tsiChecked,
+      ssi: ssiChecked,
+      nation,
+      emails: true,
+      mobile,
+      eContact,
+      eMobile,
+      tc: termsAndConditionsChecked,
+    };
+    const errors = await validateUser(newUserData);
+    console.log("errors:", errors);
+    setFormErrors(errors);
+  };
 
   return (
     <div className={styles.member_details_container}>
@@ -48,7 +79,7 @@ export const MemberDetails = ({ email }) => {
           you know you can access the Member Portal!
         </p>
       </div>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.email}>
           <label>Email:</label>
           <input
@@ -225,8 +256,14 @@ export const MemberDetails = ({ email }) => {
             <p>Agree to the Terms and Conditions</p>
           </div>
         </div>
+        {formErrors.length > 0 &&
+          formErrors.map((error, index) => (
+            <div className={styles.error} key={index}>
+              {error}
+            </div>
+          ))}
         <div className={styles.submit_button}>
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
