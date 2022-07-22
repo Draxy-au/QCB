@@ -1,7 +1,6 @@
 import checkExists from "./checkExists";
 
 export default async function validateUser(userData) {
-  console.log("userData:", userData);
   let errors = [];
 
   if (userData.userEmail) {
