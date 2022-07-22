@@ -9,7 +9,7 @@ form {
   align-items: center;
   justify-content: center;
 
-  label {
+  & > label {
     width: 100%;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ form {
     font-size: 2rem;
   }
 
-  input {
+  & > input {
     width: 100%;
     display: flex;
     align-items: center;
