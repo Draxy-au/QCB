@@ -8,6 +8,9 @@ $page_background: colours.$white;
 $label_colour: colours.$burntorange;
 $input_colour: colours.$sage;
 
+$submit_background: colours.$sage;
+$submit_colour: colours.$white;
+
 .member_details_container {
   width: 100%;
   background-color: $page_background;
@@ -21,10 +24,20 @@ $input_colour: colours.$sage;
     justify-content: center;
     font-family: $label_font;
     font-size: 1.4rem;
+    margin-bottom: 2rem;
 
     & div {
       width: 100%;
       padding: 0 2rem;
+    }
+
+    & button {
+      width: 10rem;
+      border: none;
+      background-color: $submit_background;
+      color: $submit_colour;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
     }
   }
 
@@ -77,7 +90,19 @@ $input_colour: colours.$sage;
     color: colours.$burntorange;
   }
 
+  .submit_button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   @media (min-width: 40em) {
+    .submit_button {
+      justify-content: flex-start;
+      margin-left: 2rem;
+    }
+
     label {
       width: 100%;
       display: flex;

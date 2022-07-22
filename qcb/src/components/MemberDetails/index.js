@@ -168,7 +168,7 @@ export const MemberDetails = ({ email }) => {
             <input
               type="text"
               name="nation"
-              placeholder="optional"
+              placeholder="(optional)"
               value={nation}
               onChange={(e) => {
                 setNation(e.target.value);
@@ -225,7 +225,9 @@ export const MemberDetails = ({ email }) => {
             <p>Agree to the Terms and Conditions</p>
           </div>
         </div>
-        <button>Submit</button>
+        <div className={styles.submit_button}>
+          <button>Submit</button>
+        </div>
       </form>
     </div>
   );
