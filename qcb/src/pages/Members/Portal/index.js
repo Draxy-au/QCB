@@ -17,7 +17,7 @@ export default function Portal() {
     return (
       <div>
         <Navbar current={"About Us"} />
-        <Image src={spinner} height={30} width={30} alt="loading..." />
+        <Image priority src={spinner} height={30} width={30} alt="loading..." />
       </div>
     );
   }
