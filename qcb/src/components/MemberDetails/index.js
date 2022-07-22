@@ -19,7 +19,7 @@ export const MemberDetails = ({ email }) => {
 
   return (
     <div className={styles.member_details_container}>
-      <form>
+      <form className="form">
         <div className={styles.email}>
           <label>Email:</label>
           <input type="text" value={userEmail} readOnly />
