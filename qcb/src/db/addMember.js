@@ -5,7 +5,7 @@ export default async function addMember(memberData) {
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
     cache: new InMemoryCache(),
     headers: {
-      authorization: `Bearer ${process.env.QCB}`,
+      authorization: `Bearer ${process.env.NEXT_PUBLIC_QCB}`,
     },
   });
 
