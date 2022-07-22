@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./Portal.module.scss";
 
 import spinner from "@assets/icons/spinner.gif";
+import Image from "next/image";
 
 export default function Portal() {
   const { data: session, status } = useSession();
@@ -15,7 +16,8 @@ export default function Portal() {
   if (loading) {
     return (
       <div>
-        <img src={spinner} alt="loading..." />
+        <Navbar current={"About Us"} />
+        <Image src={spinner} height={30} width={30} alt="loading..." />
       </div>
     );
   }

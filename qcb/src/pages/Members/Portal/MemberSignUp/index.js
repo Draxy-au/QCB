@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useSession, getSession, signOut } from "next-auth/react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
@@ -16,7 +17,7 @@ export default function MemberSignUp({ session, member }) {
   if (loading) {
     return (
       <div>
-        <img src={spinner} alt="loading..." />
+        <Image src={spinner} height="30" width="30" alt="loading..." />
       </div>
     );
   }
