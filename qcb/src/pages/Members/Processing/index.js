@@ -1,5 +1,5 @@
 import Navbar from "@components/Navbar";
-import styles from "./Processing.module.scss";
+import styles from "./PStyle.module.scss";
 
 export default function Processing() {
   return (
