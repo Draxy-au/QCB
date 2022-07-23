@@ -55,4 +55,10 @@ export default async function addMember(memberData) {
       }
     `,
   });
+
+  if (newUser) {
+    return true;
+  } else {
+    return false;
+  }
 }
