@@ -20,8 +20,8 @@ export default function Processing() {
           days for this to occur.
         </p>
         <p>
-          If you have had no word on your application, please feel free to email
-          QCB directly:{" "}
+          If you have had no progress on your application after a few days,
+          please feel free to email QCB directly:{" "}
           <a href="mailto:qldcampingbears@gmail.com">
             qldcampingbears@gmail.com
           </a>
