@@ -28,12 +28,8 @@ export default function MemberSignUp({ session, member }) {
       <div className={styles.member_signup_page_container}>
         <Navbar />
         <div className="pages">
-          <h1>Member Sign Up</h1>
-
           <MemberPortal memberData={member} />
 
-          <p>{session.user.email}</p>
-          <p>{member && member.firstName}</p>
           <button onClick={() => signOut()}>Sign out</button>
         </div>
       </div>
