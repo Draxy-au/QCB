@@ -6,4 +6,8 @@ $page_background: colours.$white;
 .portal_page_container {
   width: 100%;
   background-color: $page_background;
+
+  .portal_button {
+    padding-left: 2rem;
+  }
 }

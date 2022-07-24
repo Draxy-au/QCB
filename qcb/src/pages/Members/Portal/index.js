@@ -27,8 +27,16 @@ export default function Portal() {
     return (
       <div className={styles.portal_page_container}>
         <Navbar current={"About Us"} />
-        <h1>Member Portal</h1>
-        <button onClick={() => signIn()}>Sign In</button>
+        <div className="pages">
+          <h1>Member Portal</h1>
+          <p>
+            The Member Portal is where members QLD Camping Bears communicate
+            upcoming events, the latest news, share photos, and much more.
+          </p>
+          <div className={styles.portal_button}>
+            <button onClick={() => signIn()}>Enter Member Portal</button>
+          </div>
+        </div>
       </div>
     );
   }

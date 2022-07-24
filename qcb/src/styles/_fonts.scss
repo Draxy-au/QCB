@@ -1,5 +1,9 @@
 @use "@styles/colours";
 
+$button_font: "Koho Bold";
+$button_background: colours.$burntorange;
+$button_colour: colours.$white;
+
 @font-face {
   font-family: "Capture";
   src: url("/fonts/capture-regular.woff2") format("woff2"),
@@ -110,6 +114,20 @@
       font-family: "Koho";
       font-size: 1.2rem;
     }
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $button_font;
+    font-size: 1.6rem;
+    background-color: $button_background;
+    color: $button_colour;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    margin: 0.2rem;
   }
 }
 @media (min-width: 40em) {
