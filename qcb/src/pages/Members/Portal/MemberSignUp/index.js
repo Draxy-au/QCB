@@ -29,8 +29,9 @@ export default function MemberSignUp({ session, member }) {
         <Navbar />
         <div className="pages">
           <MemberPortal memberData={member} />
-
-          <button onClick={() => signOut()}>Sign out</button>
+          <div className={styles.sign_out_button}>
+            <button onClick={() => signOut()}>Sign out</button>
+          </div>
         </div>
       </div>
     );

@@ -6,4 +6,8 @@ $page_background: colours.$white;
 .member_signup_page_container {
   width: 100%;
   background-color: $page_background;
+
+  .sign_out_button {
+    padding-left: 2rem;
+  }
 }
