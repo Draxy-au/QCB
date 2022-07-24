@@ -8,6 +8,7 @@ import { MemberDetails } from "@components/MemberDetails";
 
 import styles from "./MemberSignUp.module.scss";
 import spinner from "@assets/icons/spinner.gif";
+import { MemberPortal } from "@components/MemberPortal";
 
 export default function MemberSignUp({ session, member }) {
   const { status } = useSession();
@@ -28,6 +29,9 @@ export default function MemberSignUp({ session, member }) {
         <Navbar />
         <div className="pages">
           <h1>Member Sign Up</h1>
+
+          <MemberPortal memberData={member} />
+
           <p>{session.user.email}</p>
           <p>{member && member.firstName}</p>
           <button onClick={() => signOut()}>Sign out</button>
@@ -88,7 +92,6 @@ export const getServerSideProps = async (context) => {
   });
 
   const member = data.data.member;
-  console.log("Member:", member);
 
   return {
     props: {
