@@ -1,0 +1,20 @@
+[
+  {
+    "aboriginal": false,
+    "acceptEmails": true,
+    "admin": true,
+    "dateOfBirth": "02/08/1980",
+    "email": "draxy80@gmail.com",
+    "emergencyContactName": "John Carroll",
+    "emergencyContactNumber": "0433425754",
+    "firstName": "William",
+    "lastName": "Hamilton",
+    "mobile": "0433425754",
+    "nation": "",
+    "postcode": "4000",
+    "southSeaIslander": false,
+    "suburb": "Petrie Terrace",
+    "torresStraitIslander": true,
+    "username": "DraxyBear"
+  }
+]

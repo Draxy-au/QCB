@@ -2,8 +2,32 @@
 @use "@styles/fonts";
 
 $page_background: colours.$white;
+$gallery_link_colour: colours.$burntorange_light;
 
 .member_portal_container {
   width: 100%;
   background-color: $page_background;
+
+  .gallery_area {
+    padding: 2rem 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .gallery_link {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      font-size: 1.6rem;
+      color: $gallery_link_colour;
+    }
+  }
 }
