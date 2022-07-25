@@ -1,5 +1,6 @@
 import Navbar from "@components/Navbar";
 import { useSession, getSession } from "next-auth/react";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 
 import styles from "./Events.module.scss";
