@@ -63,17 +63,22 @@ export default function Events({ session, member, events }) {
 
           <div className={styles.event_banners}>
             {events.map((event, index) => (
-              <div key={index}>
-                <Link href={eventURLs[index]}>
-                  <a>
-                    <Image
-                      src={event.eventBanner.url}
-                      alt=""
-                      height={436}
-                      width={833}
-                    />
-                  </a>
-                </Link>
+              <div className={styles.event_banner} key={index}>
+                <div className={styles.title}>
+                  <h1>{event.name}</h1>
+                </div>
+                <div>
+                  <Link href={eventURLs[index]}>
+                    <a>
+                      <Image
+                        src={event.eventBanner.url}
+                        alt=""
+                        height={436}
+                        width={833}
+                      />
+                    </a>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

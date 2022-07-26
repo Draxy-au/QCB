@@ -22,6 +22,20 @@ $page_background: colours.$white;
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
+    gap: 1rem;
+
+    .event_banner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      .title {
+        width: 100%;
+      }
+    }
   }
 
   @media (min-width: 40em) {
