@@ -9,7 +9,7 @@ export default function CarouselItem({ slide, stopSlide, startSlide }) {
       onMouseEnter={stopSlide}
       onMouseLeave={startSlide}
     >
-      <Image src={slide} alt="" height={436} width={1100} />
+      <Image src={slide} alt="" height={436} width={833} />
     </div>
   );
 }

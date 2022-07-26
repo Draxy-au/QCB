@@ -40,7 +40,6 @@ export default function Home({ cards, slides }) {
               controls
               interval={4000}
               autoPlay={true}
-              width={1100}
             />
           )}
         </div>

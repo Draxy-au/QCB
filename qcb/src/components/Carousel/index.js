@@ -63,18 +63,19 @@ export default function Carousel({
             className={styles.carousel_inner}
             style={{ transform: `translateX(${-currentSlide * 100}%)` }}
           >
-            {slides.map((slide, index) => (
-              <Link key={index} href={links[index]}>
-                <a>
-                  <CarouselItem
-                    key={index}
-                    slide={slide}
-                    stopSlide={stopSlideTimer}
-                    startSlide={startSlideTimer}
-                  />
-                </a>
-              </Link>
-            ))}
+            {slides &&
+              slides.map((slide, index) => (
+                <Link key={index} href={links[index]}>
+                  <a>
+                    <CarouselItem
+                      key={index}
+                      slide={slide}
+                      stopSlide={stopSlideTimer}
+                      startSlide={startSlideTimer}
+                    />
+                  </a>
+                </Link>
+              ))}
           </div>
           {indicators && (
             <CarouselIndicators
