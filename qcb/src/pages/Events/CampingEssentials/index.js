@@ -6,7 +6,7 @@ import styles from "./CampingEssentials.module.scss";
 export default function CampingEssentials({ campingEssentials }) {
   return (
     <div className={styles.campingessentials_page_container}>
-      <Navbar current={"About Us"} />
+      <Navbar current={"Events"} />
       <div
         className="pages"
         dangerouslySetInnerHTML={{

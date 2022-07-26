@@ -37,7 +37,7 @@ export default function Events({ events }) {
 
   return (
     <div className={styles.eventspage_container}>
-      <Navbar />
+      <Navbar current={"Events"} />
       <div className="pages">
         <div className={styles.event_carousel}>
           {events && (
@@ -50,25 +50,26 @@ export default function Events({ events }) {
         </div>
 
         <div className={styles.event_banners}>
-          {events.map((event, index) => (
-            <div className={styles.event_banner} key={index}>
-              <div className={styles.title}>
-                <h1>{event.name}</h1>
+          {eventURLs[0] &&
+            events.map((event, index) => (
+              <div className={styles.event_banner} key={index}>
+                <div className={styles.title}>
+                  <h1>{event.name}</h1>
+                </div>
+                <div>
+                  <Link href={eventURLs[index]}>
+                    <a>
+                      <Image
+                        src={event.eventBanner.url}
+                        alt={event.name}
+                        height={436}
+                        width={833}
+                      />
+                    </a>
+                  </Link>
+                </div>
               </div>
-              <div>
-                <Link href={eventURLs[index]}>
-                  <a>
-                    <Image
-                      src={event.eventBanner.url}
-                      alt={event.name}
-                      height={436}
-                      width={833}
-                    />
-                  </a>
-                </Link>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
@@ -76,8 +77,6 @@ export default function Events({ events }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-
   const client = new ApolloClient({
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
     cache: new InMemoryCache(),
