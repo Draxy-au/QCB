@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import Carousel from "@components/Carousel";
 import Link from "next/link";
 
-export default function Events({ session, member, events }) {
+export default function Events({ events }) {
   const { status } = useSession();
 
   const [eventSlides, setEventSlides] = useState([]);
@@ -35,57 +35,44 @@ export default function Events({ session, member, events }) {
     );
   }
 
-  if (member) {
-    return (
-      <div className={styles.eventspage_container}>
-        <Navbar />
-        <div className="pages">
-          <h1>Member Event Page</h1>
+  return (
+    <div className={styles.eventspage_container}>
+      <Navbar />
+      <div className="pages">
+        <div className={styles.event_carousel}>
+          {events && (
+            <Carousel
+              slides={eventSlides}
+              links={eventURLs}
+              autoPlay={eventSlides.length > 1 ? true : false}
+            />
+          )}
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className={styles.eventspage_container}>
-        <Navbar />
-        <div className="pages">
-          <h1>Non-Member Event Page</h1>
 
-          <div className={styles.event_carousel}>
-            {events && (
-              <Carousel
-                slides={eventSlides}
-                links={eventURLs}
-                autoPlay={eventSlides.length > 1 ? true : false}
-              />
-            )}
-          </div>
-
-          <div className={styles.event_banners}>
-            {events.map((event, index) => (
-              <div className={styles.event_banner} key={index}>
-                <div className={styles.title}>
-                  <h1>{event.name}</h1>
-                </div>
-                <div>
-                  <Link href={eventURLs[index]}>
-                    <a>
-                      <Image
-                        src={event.eventBanner.url}
-                        alt=""
-                        height={436}
-                        width={833}
-                      />
-                    </a>
-                  </Link>
-                </div>
+        <div className={styles.event_banners}>
+          {events.map((event, index) => (
+            <div className={styles.event_banner} key={index}>
+              <div className={styles.title}>
+                <h1>{event.name}</h1>
               </div>
-            ))}
-          </div>
+              <div>
+                <Link href={eventURLs[index]}>
+                  <a>
+                    <Image
+                      src={event.eventBanner.url}
+                      alt={event.name}
+                      height={436}
+                      width={833}
+                    />
+                  </a>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export const getServerSideProps = async (context) => {
@@ -95,32 +82,6 @@ export const getServerSideProps = async (context) => {
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
     cache: new InMemoryCache(),
   });
-
-  if (session) {
-    const data = await client.query({
-      query: gql`
-          query PageMemberSignUp {
-            member(where: { email: "${session.user.email}" }) {
-              firstName
-              lastName
-              mobile
-              nation
-              postcode
-              southSeaIslander
-              suburb
-              torresStraitIslander
-              username
-              aboriginal
-              acceptEmails
-              admin
-              emergencyContactName
-              emergencyContactNumber
-              id
-            }
-          }, 
-        `,
-    });
-  }
 
   const events_data = await client.query({
     query: gql`
@@ -133,19 +94,6 @@ export const getServerSideProps = async (context) => {
     }, 
       `,
   });
-
-  if (session) {
-    const member = data.data.member;
-    const events = events_data.data.events;
-
-    return {
-      props: {
-        session,
-        member,
-        events,
-      },
-    };
-  }
 
   const events = events_data.data.events;
 
