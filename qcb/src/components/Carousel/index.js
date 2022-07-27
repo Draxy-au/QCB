@@ -71,7 +71,7 @@ export default function Carousel({
                     <CarouselItem
                       key={index}
                       slide={slide}
-                      heading={headings[index]}
+                      heading={headings ? headings[index] : null}
                       stopSlide={stopSlideTimer}
                       startSlide={startSlideTimer}
                     />
