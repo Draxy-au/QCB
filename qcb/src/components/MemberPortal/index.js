@@ -73,7 +73,7 @@ export const MemberPortal = ({ memberData }) => {
         </p>
         {registeredEvents && (
           <div className={styles.registered_events_section}>
-            <h1>Registered Events</h1>
+            <h1>Your Registered Events</h1>
             <div className={styles.registered_events}>
               {registeredEvents.map((event) => (
                 <div key={event.slug}>
