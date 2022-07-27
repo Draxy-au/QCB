@@ -55,7 +55,7 @@ const EventDetails = ({ event }) => {
       <Navbar current={"Events"} />
       <div className="pages">
         <span className={styles.title}>{event.name}</span>
-        <EventInfo event={event} verifiedMember={true} />
+        <EventInfo event={event} verifiedMember={verified} />
       </div>
     </div>
   );
@@ -115,103 +115,3 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-// export async function getServerSideProps(context) {
-//   const { params } = context;
-//   const eventSlug = params.slug;
-//   const session = await getSession(context);
-
-//   const client = new ApolloClient({
-//     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
-//     cache: new InMemoryCache(),
-//   });
-
-//   if (!session) {
-//     const events_data = await client.query({
-//       query: gql`
-//     query Events {
-//       events(where: {slug: "${eventSlug}"}) {
-//         capacity
-//         costDetails
-//         date
-//         description {
-//           html
-//         }
-//         duration
-//         eventImage
-//         facebookEventLink
-//         id
-//         indigenousLand
-//         members {
-//           username
-//         }
-//         name
-//         slug
-//         ticketsLink
-//         time
-//         venue
-//         venueAddress
-//         venueType
-//         map {
-//           latitude
-//           longitude
-//         }
-//       }
-//     },
-//       `,
-//     });
-//     const event = events_data.data.events[0];
-//     return {
-//       props: {
-//         event,
-//       },
-//     };
-//   } else {
-//     console.log("GOT IN TO SESSION");
-//     const events_data = await client.query({
-//       query: gql`
-//       query Events {
-//         events(where: {slug: "${eventSlug}"}) {
-//           capacity
-//           costDetails
-//           date
-//           description {
-//             html
-//           }
-//           duration
-//           eventImage
-//           facebookEventLink
-//           id
-//           indigenousLand
-//           members {
-//             username
-//           }
-//           name
-//           slug
-//           ticketsLink
-//           time
-//           venue
-//           venueAddress
-//           venueType
-//           map {
-//             latitude
-//             longitude
-//           }
-//         }
-//         member(where: { email: "${session.user.email}" }) {
-//           username
-//           verifiedMember
-//         }
-//       }
-//       ,`,
-//     });
-//     const event = events_data.data.events[0];
-//     const member = memberData.data.member;
-//     return {
-//       props: {
-//         event,
-//         member,
-//       },
-//     };
-//   }
-// }
