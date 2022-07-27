@@ -15,7 +15,9 @@ export const EventInfo = ({ event }) => {
           />
         </div>
         <div className={styles.date_time}>
-          {event.date} {event.time}
+          <span className={styles.bold}>
+            {event.date} {event.time}
+          </span>
         </div>
         <div className={styles.duration}>
           <span className={styles.bold}>Duration:</span> {event.duration}{" "}
