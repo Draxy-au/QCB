@@ -17,11 +17,11 @@ const EventDetails = ({ event }) => {
     if (session) {
       setUserEmail(session.user.email);
       console.log("session found.", session);
+      memberVerified(session.user.email);
     }
-    memberVerified();
   }, [session]);
 
-  async function memberVerified() {
+  async function memberVerified(email) {
     const client = new ApolloClient({
       uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
       cache: new InMemoryCache(),
@@ -30,7 +30,7 @@ const EventDetails = ({ event }) => {
     const member_data = await client.query({
       query: gql`
         query Events {
-          member(where: { email: "${userEmail}" }) {
+          member(where: { email: "${email}" }) {
             username
             verifiedMember
           }
