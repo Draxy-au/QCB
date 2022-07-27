@@ -38,6 +38,7 @@ const EventDetails = ({ event }) => {
       `,
     });
     const member = member_data.data.member;
+    console.log(member);
     if (member.verifiedMember) {
       setVerified(true);
     } else {
