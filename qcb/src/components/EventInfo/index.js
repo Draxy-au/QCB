@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./EventInfo.module.scss";
 
-export const EventInfo = ({ event }) => {
+export const EventInfo = ({ event, verifiedMember }) => {
   return (
     <div className={styles.event_info_container}>
       <div className={styles.info}>
@@ -18,7 +18,7 @@ export const EventInfo = ({ event }) => {
         <div className={styles.date_time}>
           {event.date} {event.time}
         </div>
-
+        {verifiedMember && <>VERIFIED MEMBER</>}
         <div className={styles.duration}>
           <span className={styles.bold}>Duration:</span> {event.duration}{" "}
           {event.duration < 2 ? "day" : "days"}
