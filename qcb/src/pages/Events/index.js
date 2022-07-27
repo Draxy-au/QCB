@@ -39,7 +39,6 @@ export default function Events({ events, slides, urls }) {
               slides={eventSlides}
               links={eventURLs}
               controls={true}
-              indicators={true}
               autoPlay={eventSlides.length > 1 ? true : false}
             />
           )}
