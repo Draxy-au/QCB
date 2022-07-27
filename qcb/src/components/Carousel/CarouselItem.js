@@ -14,7 +14,7 @@ export default function CarouselItem({
       onMouseEnter={stopSlide}
       onMouseLeave={startSlide}
     >
-      <h1>{heading}</h1>
+      {heading && <h1>{heading}</h1>}
       <Image src={slide} alt="" height={471} width={900} />
     </div>
   );
