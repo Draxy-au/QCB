@@ -2,12 +2,16 @@ import Navbar from "@components/Navbar";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./EventDetails.module.scss";
+import { EventInfo } from "@components/EventInfo";
 
-const EventDetails = ({ events }) => {
+const EventDetails = ({ event }) => {
   return (
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
-      Event Details for {events.slug}
+      <div className="pages">
+        <h1>{event.name}</h1>
+        <EventInfo event={event} />
+      </div>
     </div>
   );
 };
@@ -52,11 +56,11 @@ export async function getServerSideProps({ params }, context) {
       `,
   });
 
-  const events = events_data.data.events[0];
+  const event = events_data.data.events[0];
 
   return {
     props: {
-      events,
+      event,
     },
   };
 }

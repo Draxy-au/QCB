@@ -1,0 +1,50 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$page_background: colours.$white;
+$info_font: "Koho";
+$info_font_size: 1.6rem;
+
+.event_info_container {
+  width: 100%;
+  background-color: $page_background;
+
+  .info {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2rem;
+    font-family: $info_font;
+    font-size: $info_font_size;
+    gap: 1rem;
+
+    .bold {
+      font-weight: 700;
+    }
+
+    .details {
+      width: 100%;
+
+      p {
+        font-size: $info_font_size;
+        padding: 0;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .facebook_link {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .ticket_link {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+}
