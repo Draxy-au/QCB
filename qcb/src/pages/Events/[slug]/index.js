@@ -10,13 +10,10 @@ import { useEffect, useState } from "react";
 
 const EventDetails = ({ event }) => {
   const { data: session, status } = useSession();
-  const [userEmail, setUserEmail] = useState();
   const [verified, setVerified] = useState(false);
 
   useEffect(() => {
     if (session) {
-      setUserEmail(session.user.email);
-      console.log("session found.", session);
       memberVerified(session.user.email);
     }
   }, [session]);
@@ -38,7 +35,7 @@ const EventDetails = ({ event }) => {
       `,
     });
     const member = member_data.data.member;
-    console.log(member);
+
     if (member.verifiedMember) {
       setVerified(true);
     } else {
