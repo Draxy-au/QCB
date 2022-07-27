@@ -12,9 +12,11 @@
       margin: 0 auto;
       overflow: hidden;
       // max-width: 900px;
+      width: 100%;
       position: relative;
 
       .carousel_inner {
+        width: 100%;
         white-space: nowrap;
         transition: ease 1s;
       }

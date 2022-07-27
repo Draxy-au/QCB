@@ -29,7 +29,7 @@ export default function Events({ events, slides, urls }) {
   return (
     <div className={styles.eventspage_container}>
       <Navbar current={"Events"} />
-      <div className="pages">
+      <div className={styles.eventpage}>
         <div className={styles.title}>
           <h1>Upcoming Events</h1>
         </div>
@@ -39,6 +39,7 @@ export default function Events({ events, slides, urls }) {
               slides={eventSlides}
               links={eventURLs}
               controls={true}
+              indicators={true}
               autoPlay={eventSlides.length > 1 ? true : false}
             />
           )}

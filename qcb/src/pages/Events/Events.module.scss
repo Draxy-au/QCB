@@ -1,10 +1,27 @@
 @use "@styles/colours";
+@use "@styles/fonts";
 
 $page_background: colours.$white;
+
+$heading_font_size: fonts.$heading_font_size;
+$heading_font_colour: fonts.$heading_colour;
+$heading_font: fonts.$heading_font_size;
 
 .eventspage_container {
   width: 100%;
   background-color: $page_background;
+
+  .eventpage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-family: $heading_font;
+    color: $heading_font_colour;
+    padding: 0 2rem;
+  }
 
   .event_carousel {
     width: 100%;
