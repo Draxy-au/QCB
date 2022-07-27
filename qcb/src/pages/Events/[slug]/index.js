@@ -77,8 +77,11 @@ export async function getServerSideProps({ params }, context) {
       `,
   });
 
-  const memberData = await client.query({
-    query: gql`
+  const event = events_data.data.events[0];
+
+  if (session) {
+    const memberData = await client.query({
+      query: gql`
       query PageMemberSignUp {
         member(where: { email: "${session.user.email}" }) {
           username
@@ -86,15 +89,21 @@ export async function getServerSideProps({ params }, context) {
         }
       }
     `,
-  });
+    });
 
-  const member = memberData.data.member;
-  const event = events_data.data.events[0];
+    const member = memberData.data.member;
 
-  return {
-    props: {
-      event,
-      member,
-    },
-  };
+    return {
+      props: {
+        event,
+        member,
+      },
+    };
+  } else {
+    return {
+      props: {
+        event,
+      },
+    };
+  }
 }
