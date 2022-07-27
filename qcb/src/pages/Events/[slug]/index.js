@@ -13,7 +13,7 @@ const EventDetails = ({ event }) => {
   const [verified, setVerified] = useState(false);
 
   useEffect(() => {
-    setVerified(memberVerified());
+    //setVerified(memberVerified());
   }, []);
 
   const memberVerified = async () => {
