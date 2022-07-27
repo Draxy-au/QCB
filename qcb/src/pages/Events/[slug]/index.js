@@ -1,15 +1,44 @@
 import Navbar from "@components/Navbar";
-import { useSession, getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./EventDetails.module.scss";
 import { EventInfo } from "@components/EventInfo";
 import spinner from "@assets/icons/spinner.gif";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const EventDetails = ({ event }) => {
-  const { status } = useSession();
+  const { status, data: session } = useSession();
+  const [verified, setVerified] = useState(false);
+
+  useEffect(() => {
+    setVerified(memberVerified());
+  }, []);
+
+  const memberVerified = async () => {
+    const client = new ApolloClient({
+      uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+      cache: new InMemoryCache(),
+    });
+
+    const member_data = await client.query({
+      query: gql`
+        query Events {
+          member(where: { email: "${session.user.email}" }) {
+            username
+            verifiedMember
+          }
+        },
+      `,
+    });
+    const member = member_data.data.member;
+    if (member.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const loading = status === "loading";
 
@@ -20,6 +49,7 @@ const EventDetails = ({ event }) => {
       </div>
     );
   }
+
   return (
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
