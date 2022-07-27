@@ -33,19 +33,18 @@ const EventDetails = ({ event, member }) => {
 
 export default EventDetails;
 
-export async function getServerSideProps({ params }, context) {
+export async function getServerSideProps({ params }) {
   const eventSlug = params.slug;
-  const session = await getSession(context);
-
-  console.log("session:", session);
+  const session = await getSession(params.context);
 
   const client = new ApolloClient({
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
     cache: new InMemoryCache(),
   });
 
-  const events_data = await client.query({
-    query: gql`
+  if (!session) {
+    const events_data = await client.query({
+      query: gql`
     query Events {
       events(where: {slug: "${eventSlug}"}) {
         capacity
@@ -76,36 +75,57 @@ export async function getServerSideProps({ params }, context) {
       }
     }, 
       `,
-  });
-
-  const event = events_data.data.events[0];
-
-  if (session) {
-    const memberData = await client.query({
+    });
+    const event = events_data.data.events[0];
+    return {
+      props: {
+        event,
+      },
+    };
+  } else {
+    const events_data = await client.query({
       query: gql`
-      query PageMemberSignUp {
+      query Events {
+        events(where: {slug: "${eventSlug}"}) {
+          capacity
+          costDetails
+          date
+          description {
+            html
+          }
+          duration
+          eventImage
+          facebookEventLink
+          id
+          indigenousLand
+          members {
+            username
+          }
+          name
+          slug
+          ticketsLink
+          time
+          venue
+          venueAddress
+          venueType
+          map {
+            latitude
+            longitude
+          }
+        }
         member(where: { email: "${session.user.email}" }) {
           username
           verifiedMember
         }
-      }
-    `,
+      }     
+      ,`,
     });
-
+    const event = events_data.data.events[0];
     const member = memberData.data.member;
-
-    console.log(member);
-
     return {
       props: {
         event,
         member,
-      },
-    };
-  } else {
-    return {
-      props: {
-        event,
       },
     };
   }
