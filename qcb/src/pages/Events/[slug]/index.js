@@ -92,6 +92,8 @@ export async function getServerSideProps({ params }, context) {
 
     const member = memberData.data.member;
 
+    console.log(member);
+
     return {
       props: {
         event,
