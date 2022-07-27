@@ -10,11 +10,12 @@ import { useEffect, useState } from "react";
 import Carousel from "@components/Carousel";
 import Link from "next/link";
 
-export default function Events({ events, slides, urls }) {
+export default function Events({ events, slides, urls, names }) {
   const { status } = useSession();
 
   const [eventSlides, setEventSlides] = useState(slides);
   const [eventURLs, setEventURLs] = useState(urls);
+  const [eventNames, setEventNames] = useState(names);
 
   const loading = status === "loading";
 
@@ -38,6 +39,7 @@ export default function Events({ events, slides, urls }) {
             <Carousel
               slides={eventSlides}
               links={eventURLs}
+              headings={eventNames}
               controls={true}
               indicators={true}
               autoPlay={eventSlides.length > 1 ? true : false}
@@ -94,10 +96,12 @@ export const getServerSideProps = async (context) => {
 
   let slides = [];
   let urls = [];
+  let names = [];
 
   events.forEach((event) => {
     slides = [...slides, event.eventImage.url];
     urls = [...urls, `/Events/${event.slug}`];
+    names = [...names, event.name];
   });
 
   return {
@@ -105,6 +109,7 @@ export const getServerSideProps = async (context) => {
       events,
       slides,
       urls,
+      names,
     },
   };
 };

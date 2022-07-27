@@ -9,6 +9,7 @@ import Link from "next/link";
 export default function Carousel({
   slides,
   links,
+  headings,
   interval = 4000,
   controls = false,
   indicators = false,
@@ -70,6 +71,7 @@ export default function Carousel({
                     <CarouselItem
                       key={index}
                       slide={slide}
+                      heading={headings[index]}
                       stopSlide={stopSlideTimer}
                       startSlide={startSlideTimer}
                     />
