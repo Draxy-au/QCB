@@ -34,18 +34,22 @@ export const EventInfo = ({ event }) => {
             }}
           />
         </div>
-        <div className={styles.facebook_link}>
-          <span className={styles.bold}>Facebook Link:</span>
-          <Link href={event.facebookEventLink}>
-            <a target="_blank">Link</a>
-          </Link>
-        </div>
-        <div className={styles.ticket_link}>
-          <span className={styles.bold}>Ticket Link:</span>
-          <Link href={event.ticketsLink}>
-            <a target="_blank">Link</a>
-          </Link>
-        </div>
+        {event.facebookEventLink && (
+          <div className={styles.facebook_link}>
+            <span className={styles.bold}>Facebook Link:</span>
+            <Link href={event.facebookEventLink}>
+              <a target="_blank">Link</a>
+            </Link>
+          </div>
+        )}
+        {event.ticketsLink && (
+          <div className={styles.ticket_link}>
+            <span className={styles.bold}>Ticket Link:</span>
+            <Link href={event.ticketsLink}>
+              <a target="_blank">Link</a>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
