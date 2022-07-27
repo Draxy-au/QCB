@@ -65,7 +65,7 @@ export const MemberPortal = ({ memberData }) => {
     <div className={styles.member_portal_container}>
       <div className={styles.portal}>
         <h1>Member Portal</h1>
-        <p>Welcome to the Member Portal, {data.username}.</p>
+        <p>Welcome to the Member Portal, {memberData.username}.</p>
         <h1>News</h1>
         <p>
           13-Oct Consent Matters <br />
