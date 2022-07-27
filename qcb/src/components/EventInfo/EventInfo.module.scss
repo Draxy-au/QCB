@@ -4,6 +4,7 @@
 $page_background: colours.$white;
 $info_font: "Koho";
 $info_font_size: 1.6rem;
+$bold_colour: colours.$burntorange;
 
 .event_info_container {
   width: 100%;
@@ -22,6 +23,7 @@ $info_font_size: 1.6rem;
 
     .bold {
       font-weight: 700;
+      color: $bold_colour;
     }
 
     .banner {
