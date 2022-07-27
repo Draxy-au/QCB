@@ -23,7 +23,10 @@ const EventDetails = ({ event, member }) => {
       <Navbar current={"Events"} />
       <div className="pages">
         <span className={styles.title}>{event.name}</span>
-        <EventInfo event={event} verifiedMember={member.verifiedMember} />
+        {member && (
+          <EventInfo event={event} verifiedMember={member.verifiedMember} />
+        )}
+        {!member && <EventInfo event={event} verifiedMember={false} />}
       </div>
     </div>
   );
@@ -85,7 +88,7 @@ export async function getServerSideProps({ params }, context) {
     `,
   });
 
-  const member = memberData.data.events;
+  const member = memberData.data.member;
   const event = events_data.data.events[0];
 
   return {
