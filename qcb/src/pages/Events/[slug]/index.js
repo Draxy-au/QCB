@@ -8,12 +8,8 @@ import spinner from "@assets/icons/spinner.gif";
 import Image from "next/image";
 import { useEffect } from "react";
 
-const EventDetails = ({ event, member, session }) => {
+const EventDetails = ({ event }) => {
   const { status } = useSession();
-
-  useEffect(() => {
-    console.log(session);
-  }, []);
 
   const loading = status === "loading";
 
@@ -28,10 +24,9 @@ const EventDetails = ({ event, member, session }) => {
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
       <div className="pages">
-        {/* <span className={styles.title}>{event.name}</span>
+        <span className={styles.title}>{event.name}</span>
         {member && <EventInfo event={event} verifiedMember={true} />}
-        {!member && <EventInfo event={event} verifiedMember={false} />} */}
-        {member}
+        {!member && <EventInfo event={event} verifiedMember={false} />}
       </div>
     </div>
   );
@@ -41,13 +36,53 @@ export default EventDetails;
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const session = await getSession(context);
-  console.log("session", session);
-  const member = params.slug;
+
+  const slug = params.slug;
+
+  const client = new ApolloClient({
+    uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+    cache: new InMemoryCache(),
+  });
+
+  const events_data = await client.query({
+    query: gql`
+        query Events {
+          events(where: {slug: "${eventSlug}"}) {
+            capacity
+            costDetails
+            date
+            description {
+              html
+            }
+            duration
+            eventImage
+            facebookEventLink
+            id
+            indigenousLand
+            members {
+              username
+            }
+            name
+            slug
+            ticketsLink
+            time
+            venue
+            venueAddress
+            venueType
+            map {
+              latitude
+              longitude
+            }
+          }
+        },
+          `,
+  });
+
+  const event = events_data.data.events[0];
+
   return {
     props: {
-      member,
-      session,
+      event,
     },
   };
 }
