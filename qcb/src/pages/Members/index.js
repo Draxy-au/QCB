@@ -7,8 +7,10 @@ export default function Members() {
   return (
     <div className={styles.memberspage_container}>
       <Navbar current={"Members"} />
-
-      <MemberPortal memberData={[]} />
+      <div className="pages">
+        <h1>Members Information Page</h1>
+      </div>
+      {/* <MemberPortal memberData={[]} /> */}
     </div>
   );
 }
