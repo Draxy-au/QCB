@@ -23,9 +23,10 @@ const EventDetails = ({ event, member }) => {
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
       <div className="pages">
-        <span className={styles.title}>{event.name}</span>
+        {/* <span className={styles.title}>{event.name}</span>
         {member && <EventInfo event={event} verifiedMember={true} />}
-        {!member && <EventInfo event={event} verifiedMember={false} />}
+        {!member && <EventInfo event={event} verifiedMember={false} />} */}
+        {member}
       </div>
     </div>
   );
@@ -35,100 +36,112 @@ export default EventDetails;
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const eventSlug = params.slug;
   const session = await getSession(context);
-
-  const client = new ApolloClient({
-    uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
-    cache: new InMemoryCache(),
-  });
-
-  if (!session) {
-    const events_data = await client.query({
-      query: gql`
-    query Events {
-      events(where: {slug: "${eventSlug}"}) {
-        capacity
-        costDetails
-        date
-        description {
-          html
-        }
-        duration
-        eventImage
-        facebookEventLink
-        id
-        indigenousLand
-        members {
-          username
-        }
-        name
-        slug
-        ticketsLink
-        time
-        venue
-        venueAddress
-        venueType
-        map {
-          latitude
-          longitude
-        }
-      }
-    }, 
-      `,
-    });
-    const event = events_data.data.events[0];
-    return {
-      props: {
-        event,
-      },
-    };
-  } else {
-    console.log("GOT IN TO SESSION");
-    const events_data = await client.query({
-      query: gql`
-      query Events {
-        events(where: {slug: "${eventSlug}"}) {
-          capacity
-          costDetails
-          date
-          description {
-            html
-          }
-          duration
-          eventImage
-          facebookEventLink
-          id
-          indigenousLand
-          members {
-            username
-          }
-          name
-          slug
-          ticketsLink
-          time
-          venue
-          venueAddress
-          venueType
-          map {
-            latitude
-            longitude
-          }
-        }
-        member(where: { email: "${session.user.email}" }) {
-          username
-          verifiedMember
-        }
-      }     
-      ,`,
-    });
-    const event = events_data.data.events[0];
-    const member = memberData.data.member;
-    return {
-      props: {
-        event,
-        member,
-      },
-    };
-  }
+  console.log("session", session);
+  const member = params.slug;
+  return {
+    props: {
+      member,
+    },
+  };
 }
+
+// export async function getServerSideProps(context) {
+//   const { params } = context;
+//   const eventSlug = params.slug;
+//   const session = await getSession(context);
+
+//   const client = new ApolloClient({
+//     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+//     cache: new InMemoryCache(),
+//   });
+
+//   if (!session) {
+//     const events_data = await client.query({
+//       query: gql`
+//     query Events {
+//       events(where: {slug: "${eventSlug}"}) {
+//         capacity
+//         costDetails
+//         date
+//         description {
+//           html
+//         }
+//         duration
+//         eventImage
+//         facebookEventLink
+//         id
+//         indigenousLand
+//         members {
+//           username
+//         }
+//         name
+//         slug
+//         ticketsLink
+//         time
+//         venue
+//         venueAddress
+//         venueType
+//         map {
+//           latitude
+//           longitude
+//         }
+//       }
+//     },
+//       `,
+//     });
+//     const event = events_data.data.events[0];
+//     return {
+//       props: {
+//         event,
+//       },
+//     };
+//   } else {
+//     console.log("GOT IN TO SESSION");
+//     const events_data = await client.query({
+//       query: gql`
+//       query Events {
+//         events(where: {slug: "${eventSlug}"}) {
+//           capacity
+//           costDetails
+//           date
+//           description {
+//             html
+//           }
+//           duration
+//           eventImage
+//           facebookEventLink
+//           id
+//           indigenousLand
+//           members {
+//             username
+//           }
+//           name
+//           slug
+//           ticketsLink
+//           time
+//           venue
+//           venueAddress
+//           venueType
+//           map {
+//             latitude
+//             longitude
+//           }
+//         }
+//         member(where: { email: "${session.user.email}" }) {
+//           username
+//           verifiedMember
+//         }
+//       }
+//       ,`,
+//     });
+//     const event = events_data.data.events[0];
+//     const member = memberData.data.member;
+//     return {
+//       props: {
+//         event,
+//         member,
+//       },
+//     };
+//   }
+// }
