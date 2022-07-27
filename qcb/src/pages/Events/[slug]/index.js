@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./EventDetails.module.scss";
 import { EventInfo } from "@components/EventInfo";
+import spinner from "@assets/icons/spinner.gif";
 import Image from "next/image";
 
 const EventDetails = ({ event, member }) => {
@@ -23,9 +24,7 @@ const EventDetails = ({ event, member }) => {
       <Navbar current={"Events"} />
       <div className="pages">
         <span className={styles.title}>{event.name}</span>
-        {member && (
-          <EventInfo event={event} verifiedMember={member.verifiedMember} />
-        )}
+        {member && <EventInfo event={event} verifiedMember={true} />}
         {!member && <EventInfo event={event} verifiedMember={false} />}
       </div>
     </div>
