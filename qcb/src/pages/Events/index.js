@@ -30,6 +30,9 @@ export default function Events({ events, slides, urls }) {
     <div className={styles.eventspage_container}>
       <Navbar current={"Events"} />
       <div className="pages">
+        <div className={styles.title}>
+          <h1>Upcoming Events</h1>
+        </div>
         <div className={styles.event_carousel}>
           {events && (
             <Carousel
