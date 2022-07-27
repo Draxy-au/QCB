@@ -84,6 +84,7 @@ export async function getServerSideProps(context) {
       },
     };
   } else {
+    console.log("GOT IN TO SESSION");
     const events_data = await client.query({
       query: gql`
       query Events {
