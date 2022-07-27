@@ -42,7 +42,7 @@ export const MemberPortal = ({ memberData }) => {
     const events_data = await client.query({
       query: gql`
         query Events {
-          events (where: {members_every: {username: "${username}"}}){
+          events (where: {members_some: {username: "${username}"}}){
             date
             id
             name
