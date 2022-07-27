@@ -33,9 +33,10 @@ const EventDetails = ({ event, member }) => {
 
 export default EventDetails;
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps(context) {
+  const { params } = context;
   const eventSlug = params.slug;
-  const session = await getSession(params.context);
+  const session = await getSession(context);
 
   const client = new ApolloClient({
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
