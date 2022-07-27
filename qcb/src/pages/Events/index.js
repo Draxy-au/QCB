@@ -10,20 +10,11 @@ import { useEffect, useState } from "react";
 import Carousel from "@components/Carousel";
 import Link from "next/link";
 
-export default function Events({ events }) {
+export default function Events({ events, slides, urls }) {
   const { status } = useSession();
 
-  const [eventSlides, setEventSlides] = useState([]);
-  const [eventURLs, setEventURLs] = useState([]);
-
-  useEffect(() => {
-    if (events) {
-      events.forEach((event) => {
-        setEventSlides([...eventSlides, event.eventBanner.url]);
-        setEventURLs([...eventURLs, `/Events/${event.slug}`]);
-      });
-    }
-  }, []);
+  const [eventSlides, setEventSlides] = useState(slides);
+  const [eventURLs, setEventURLs] = useState(urls);
 
   const loading = status === "loading";
 
@@ -50,7 +41,7 @@ export default function Events({ events }) {
         </div>
 
         <div className={styles.event_banners}>
-          {eventURLs[0] &&
+          {eventURLs &&
             events.map((event, index) => (
               <div className={styles.event_banner} key={index}>
                 <div className={styles.title}>
@@ -96,9 +87,19 @@ export const getServerSideProps = async (context) => {
 
   const events = events_data.data.events;
 
+  let slides = [];
+  let urls = [];
+
+  events.forEach((event) => {
+    slides = [...slides, event.eventBanner.url];
+    urls = [...urls, `/Events/${event.slug}`];
+  });
+
   return {
     props: {
       events,
+      slides,
+      urls,
     },
   };
 };
