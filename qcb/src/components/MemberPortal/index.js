@@ -54,7 +54,7 @@ export const MemberPortal = ({ memberData }) => {
         }
       `,
     });
-
+    console.log(events_data.data.events);
     setRegisteredEvents(events_data.data.events);
   };
 
