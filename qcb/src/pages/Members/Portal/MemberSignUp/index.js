@@ -27,7 +27,7 @@ export default function MemberSignUp({ session, member }) {
     return (
       <div className={styles.member_signup_page_container}>
         <Navbar current={"Members"} />
-        <div className="pages">
+        <div>
           <MemberPortal memberData={member} />
           <div className={styles.sign_out_button}>
             <button onClick={() => signOut()}>Sign out</button>
