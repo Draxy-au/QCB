@@ -9,7 +9,7 @@ const EventDetails = ({ event }) => {
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
       <div className="pages">
-        <h1>{event.name}</h1>
+        <span className={styles.title}>{event.name}</span>
         <EventInfo event={event} />
       </div>
     </div>

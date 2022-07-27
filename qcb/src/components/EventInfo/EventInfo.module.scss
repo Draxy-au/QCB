@@ -11,12 +11,11 @@ $info_font_size: 1.6rem;
 
   .info {
     width: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 2rem;
+    padding: 1rem 2rem;
     font-family: $info_font;
     font-size: $info_font_size;
     gap: 1rem;
