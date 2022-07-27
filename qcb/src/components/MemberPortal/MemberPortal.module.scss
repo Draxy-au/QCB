@@ -27,6 +27,24 @@ $gallery_link_colour: colours.$burntorange_light;
       color: $heading_colour;
     }
 
+    .registered_events_section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.5rem;
+
+      .registered_events {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+    }
+
     .events_section {
       width: 100%;
       display: flex;
@@ -34,6 +52,15 @@ $gallery_link_colour: colours.$burntorange_light;
       align-items: flex-start;
       justify-content: center;
       gap: 0.5rem;
+
+      .events {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.5rem;
+      }
     }
 
     .gallery_area {

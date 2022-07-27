@@ -71,23 +71,10 @@ export const MemberPortal = ({ memberData }) => {
           13-Oct Consent Matters <br />
           10-Oct New Merch in Shop!
         </p>
-        <h1>Upcoming Events</h1>
-        <div className={styles.events_section}>
-          {eventData &&
-            eventData.map((event) => (
-              <div key={event.slug}>
-                <Link href={`/Events/${event.slug}`}>
-                  <a>
-                    {event.date} - {event.name}
-                  </a>
-                </Link>
-              </div>
-            ))}
-        </div>
         {registeredEvents && (
-          <>
-            <h1>Attending Events</h1>
-            <div className={styles.events_section}>
+          <div className={styles.registered_events_section}>
+            <h1>Registered Events</h1>
+            <div className={styles.registered_events}>
               {registeredEvents.map((event) => (
                 <div key={event.slug}>
                   <Link href={`/Events/${event.slug}`}>
@@ -98,8 +85,23 @@ export const MemberPortal = ({ memberData }) => {
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
+        <div className={styles.events_section}>
+          <h1>Upcoming Events</h1>
+          <div className={styles.events}>
+            {eventData &&
+              eventData.map((event) => (
+                <div key={event.slug}>
+                  <Link href={`/Events/${event.slug}`}>
+                    <a>
+                      {event.date} - {event.name}
+                    </a>
+                  </Link>
+                </div>
+              ))}
+          </div>
+        </div>
         <h1>Gallery</h1>
 
         <div className={styles.gallery_area}>
