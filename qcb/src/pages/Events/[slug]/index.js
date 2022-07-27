@@ -76,7 +76,7 @@ export async function getServerSideProps(context) {
   const events_data = await client.query({
     query: gql`
         query Events {
-          events(where: {slug: "${eventSlug}"}) {
+          events(where: {slug: "${slug}"}) {
             capacity
             costDetails
             date
