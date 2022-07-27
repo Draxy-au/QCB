@@ -60,7 +60,7 @@ export const MemberPortal = ({ memberData }) => {
 
   useEffect(() => {
     getEvents();
-    getRegistedEvents();
+    getRegistedEvents(data.username);
     if (!memberData) {
       setData(fakeMemberData[0]);
     }
