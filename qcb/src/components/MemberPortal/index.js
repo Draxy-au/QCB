@@ -4,13 +4,10 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./MemberPortal.module.scss";
 
-import fakeMemberData from "@data/fakeMember.json";
-
 import pic from "public/images/card_1.jpg";
 import Link from "next/link";
 
 export const MemberPortal = ({ memberData }) => {
-  const [data, setData] = useState(memberData);
   const [eventData, setEventData] = useState([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
 
@@ -54,16 +51,14 @@ export const MemberPortal = ({ memberData }) => {
         }
       `,
     });
+    console.log("username: ", username);
     console.log(events_data.data.events);
     setRegisteredEvents(events_data.data.events);
   };
 
   useEffect(() => {
     getEvents();
-    getRegistedEvents(data.username);
-    if (!memberData) {
-      setData(fakeMemberData[0]);
-    }
+    getRegistedEvents(memberData.username);
   }, []);
 
   return (
