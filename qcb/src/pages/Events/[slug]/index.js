@@ -25,8 +25,7 @@ const EventDetails = ({ event }) => {
       <Navbar current={"Events"} />
       <div className="pages">
         <span className={styles.title}>{event.name}</span>
-        {member && <EventInfo event={event} verifiedMember={true} />}
-        {!member && <EventInfo event={event} verifiedMember={false} />}
+        <EventInfo event={event} verifiedMember={true} />
       </div>
     </div>
   );
