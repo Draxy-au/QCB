@@ -12,6 +12,7 @@ import Link from "next/link";
 export const MemberPortal = ({ memberData }) => {
   const [data, setData] = useState(memberData);
   const [eventData, setEventData] = useState([]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
 
   const getEvents = async () => {
     const client = new ApolloClient({
@@ -23,37 +24,38 @@ export const MemberPortal = ({ memberData }) => {
       query: gql`
         query Events {
           events {
-            capacity
-            costDetails
             date
-            description {
-              html
-            }
-            duration
-            eventImage
-            facebookEventLink
             id
-            indigenousLand
-            members {
-              username
-            }
             name
             slug
-            ticketsLink
-            time
-            venue
-            venueAddress
-            venueType
-            map {
-              latitude
-              longitude
-            }
           }
         }
       `,
     });
 
     setEventData(events_data.data.events);
+  };
+
+  const getRegistedEvents = async (username) => {
+    const client = new ApolloClient({
+      uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+      cache: new InMemoryCache(),
+    });
+
+    const events_data = await client.query({
+      query: gql`
+        query Events {
+          events (where: {members_every: {username: "${username}"}}){
+            date
+            id
+            name
+            slug
+          }
+        }
+      `,
+    });
+
+    setRegisteredEvents(events_data.data.events);
   };
 
   useEffect(() => {
@@ -73,7 +75,7 @@ export const MemberPortal = ({ memberData }) => {
           13-Oct Consent Matters <br />
           10-Oct New Merch in Shop!
         </p>
-        <h1>Events</h1>
+        <h1>Upcoming Events</h1>
         <div className={styles.events_section}>
           {eventData &&
             eventData.map((event) => (
@@ -86,6 +88,22 @@ export const MemberPortal = ({ memberData }) => {
               </div>
             ))}
         </div>
+        {registeredEvents && (
+          <>
+            <h1>Attending Events</h1>
+            <div className={styles.events_section}>
+              {registeredEvents.map((event) => (
+                <div key={event.slug}>
+                  <Link href={`/Events/${event.slug}`}>
+                    <a>
+                      {event.date} - {event.name}
+                    </a>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
         <h1>Gallery</h1>
 
         <div className={styles.gallery_area}>
