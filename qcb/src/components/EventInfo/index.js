@@ -14,11 +14,11 @@ export const EventInfo = ({ event }) => {
             width={833}
           />
         </div>
+
         <div className={styles.date_time}>
-          <span className={styles.bold}>
-            {event.date} {event.time}
-          </span>
+          {event.date} {event.time}
         </div>
+
         <div className={styles.duration}>
           <span className={styles.bold}>Duration:</span> {event.duration}{" "}
           {event.duration < 2 ? "day" : "days"}
@@ -27,9 +27,33 @@ export const EventInfo = ({ event }) => {
           <span className={styles.bold}>Location:</span> {event.venue} :{" "}
           {event.venueAddress}
         </div>
+        <div className={styles.map}>
+          <Link
+            href={`https://maps.google.com/?q=${event.map.latitude},${event.map.longitude}`}
+          >
+            <a target="_blank">
+              <button className={styles.map_button}>Map</button>
+            </a>
+          </Link>
+        </div>
+        {event.indigenousLand && (
+          <div className={styles.indigenous_land}>
+            <span className={styles.bold}>Indigenous Land:</span>{" "}
+            {event.indigenousLand}
+          </div>
+        )}
         <div className={styles.cost}>
           <span className={styles.bold}>Cost:</span> {event.costDetails}
         </div>
+        {event.ticketsLink && (
+          <div className={styles.ticket_link}>
+            <Link href={event.ticketsLink}>
+              <a target="_blank">
+                <button className={styles.ticket_button}>Tickets</button>
+              </a>
+            </Link>
+          </div>
+        )}
         <div className={styles.details}>
           <span className={styles.bold}>Details:</span>
           <div
@@ -40,17 +64,12 @@ export const EventInfo = ({ event }) => {
         </div>
         {event.facebookEventLink && (
           <div className={styles.facebook_link}>
-            <span className={styles.bold}>Facebook Link:</span>
             <Link href={event.facebookEventLink}>
-              <a target="_blank">Link</a>
-            </Link>
-          </div>
-        )}
-        {event.ticketsLink && (
-          <div className={styles.ticket_link}>
-            <span className={styles.bold}>Ticket Link:</span>
-            <Link href={event.ticketsLink}>
-              <a target="_blank">Link</a>
+              <a target="_blank">
+                <button className={styles.facebook_button}>
+                  Facebook Event
+                </button>
+              </a>
             </Link>
           </div>
         )}

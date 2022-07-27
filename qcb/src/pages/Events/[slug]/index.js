@@ -31,26 +31,30 @@ export async function getServerSideProps({ params }, context) {
     query Events {
       events(where: {slug: "${eventSlug}"}) {
         capacity
-    costDetails
-    date
-    description {
-      html
-    }
-    duration
-    eventImage
-    facebookEventLink
-    id
-    indigenousLand
-    members {
-      username
-    }
-    name
-    slug
-    ticketsLink
-    time
-    venue
-    venueAddress
-    venueType
+        costDetails
+        date
+        description {
+          html
+        }
+        duration
+        eventImage
+        facebookEventLink
+        id
+        indigenousLand
+        members {
+          username
+        }
+        name
+        slug
+        ticketsLink
+        time
+        venue
+        venueAddress
+        venueType
+        map {
+          latitude
+          longitude
+        }
       }
     }, 
       `,

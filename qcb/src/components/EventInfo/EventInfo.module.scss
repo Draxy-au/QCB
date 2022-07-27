@@ -6,6 +6,15 @@ $info_font: "Koho";
 $info_font_size: 1.6rem;
 $bold_colour: colours.$burntorange;
 
+$map_button_background: colours.$map;
+$map_button_colour: colours.$white;
+
+$facebook_button_background: colours.$facebook;
+$facebook_button_colour: colours.$white;
+
+$ticket_button_background: colours.$ticket;
+$ticket_button_colour: colours.$white;
+
 .event_info_container {
   width: 100%;
   background-color: $page_background;
@@ -33,6 +42,10 @@ $bold_colour: colours.$burntorange;
       justify-content: center;
     }
 
+    .date_time {
+      font-weight: 700;
+    }
+
     .details {
       width: 100%;
 
@@ -43,16 +56,43 @@ $bold_colour: colours.$burntorange;
       }
     }
 
+    .map {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .map_button {
+        background-color: $map_button_background;
+        color: $map_button_colour;
+      }
+    }
+
     .facebook_link {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       gap: 1rem;
+
+      .facebook_button {
+        background-color: $facebook_button_background;
+        color: $facebook_button_colour;
+      }
     }
 
     .ticket_link {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       gap: 1rem;
+
+      .ticket_button {
+        background-color: $ticket_button_background;
+        color: $ticket_button_colour;
+      }
     }
   }
 }
