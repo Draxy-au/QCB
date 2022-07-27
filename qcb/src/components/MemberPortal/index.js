@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./MemberPortal.module.scss";
 
@@ -9,11 +10,62 @@ import pic from "public/images/card_1.jpg";
 import Link from "next/link";
 
 export const MemberPortal = ({ memberData }) => {
-  const [data, setData] = useState(fakeMemberData[0]);
+  const [data, setData] = useState(memberData);
+  const [eventData, setEventData] = useState([]);
+
+  const getEvents = async () => {
+    const client = new ApolloClient({
+      uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+      cache: new InMemoryCache(),
+    });
+
+    const events_data = await client.query({
+      query: gql`
+        query Events {
+          events {
+            capacity
+            costDetails
+            date
+            description {
+              html
+            }
+            duration
+            eventImage
+            facebookEventLink
+            id
+            indigenousLand
+            members {
+              username
+            }
+            name
+            slug
+            ticketsLink
+            time
+            venue
+            venueAddress
+            venueType
+            map {
+              latitude
+              longitude
+            }
+          }
+        }
+      `,
+    });
+
+    setEventData(events_data.data.events);
+  };
+
+  useEffect(() => {
+    getEvents();
+    if (!memberData) {
+      setData(fakeMemberData[0]);
+    }
+  }, []);
 
   return (
     <div className={styles.member_portal_container}>
-      <div className="pages">
+      <div className={styles.portal}>
         <h1>Member Portal</h1>
         <p>Welcome to the Member Portal, {data.username}.</p>
         <h1>News</h1>
@@ -22,12 +74,18 @@ export const MemberPortal = ({ memberData }) => {
           10-Oct New Merch in Shop!
         </p>
         <h1>Events</h1>
-        <p>
-          02 Aug Camp Cooyah
-          <br />
-          22 Aug Beach Trip!
-        </p>
-
+        <div className={styles.events_section}>
+          {eventData &&
+            eventData.map((event) => (
+              <div key={event.slug}>
+                <Link href={`/Events/${event.slug}`}>
+                  <a>
+                    {event.date} - {event.name}
+                  </a>
+                </Link>
+              </div>
+            ))}
+        </div>
         <h1>Gallery</h1>
 
         <div className={styles.gallery_area}>

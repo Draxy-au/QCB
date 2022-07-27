@@ -1,6 +1,14 @@
 @use "@styles/colours";
 @use "@styles/fonts";
 
+$heading_font: fonts.$heading_font;
+$heading_colour: fonts.$heading_colour;
+$heading_font_size: fonts.$heading_font_size;
+
+$normal_font: fonts.$normal_font;
+$normal_colour: fonts.$normal_colour;
+$normal_font_size: fonts.$normal_font_size;
+
 $page_background: colours.$white;
 $gallery_link_colour: colours.$burntorange_light;
 
@@ -8,26 +16,47 @@ $gallery_link_colour: colours.$burntorange_light;
   width: 100%;
   background-color: $page_background;
 
-  .gallery_area {
-    padding: 2rem 1rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
+  .portal {
+    padding: 1rem 1rem;
+    font-size: $normal_font_size;
+    color: $normal_colour;
 
-  .gallery_link {
-    padding: 1rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    h1 {
+      font-family: $heading_font;
+      font-size: $heading_font_size;
+      color: $heading_colour;
+    }
 
-    a {
-      font-size: 1.6rem;
-      color: $gallery_link_colour;
+    .events_section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .gallery_area {
+      padding: 2rem 1rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .gallery_link {
+      padding: 1rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      a {
+        font-size: 1.6rem;
+        color: $gallery_link_colour;
+      }
     }
   }
 }

@@ -10,7 +10,7 @@ export default function Members() {
       <div className="pages">
         <h1>Members Information Page</h1>
       </div>
-      {/* <MemberPortal memberData={[]} /> */}
+      <MemberPortal memberData={[]} />
     </div>
   );
 }
