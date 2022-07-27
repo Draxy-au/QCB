@@ -15,6 +15,9 @@ $facebook_button_colour: colours.$white;
 $ticket_button_background: colours.$ticket;
 $ticket_button_colour: colours.$white;
 
+$signup_button_background: colours.$sage;
+$signup_button_colour: colours.$white;
+
 .event_info_container {
   width: 100%;
   background-color: $page_background;
@@ -92,6 +95,19 @@ $ticket_button_colour: colours.$white;
       .ticket_button {
         background-color: $ticket_button_background;
         color: $ticket_button_colour;
+      }
+    }
+
+    .signup_link {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .signup_button {
+        background-color: $signup_button_background;
+        color: $signup_button_colour;
       }
     }
   }

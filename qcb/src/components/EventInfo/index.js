@@ -78,6 +78,17 @@ export const EventInfo = ({ event, verifiedMember }) => {
             </Link>
           </div>
         )}
+        {!verifiedMember && (
+          <div className={styles.signup_link}>
+            <Link href={"/Members/Portal"}>
+              <a>
+                <button className={styles.signup_button}>
+                  Sign In for Full Details
+                </button>
+              </a>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
