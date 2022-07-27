@@ -6,9 +6,14 @@ import styles from "./EventDetails.module.scss";
 import { EventInfo } from "@components/EventInfo";
 import spinner from "@assets/icons/spinner.gif";
 import Image from "next/image";
+import { useEffect } from "react";
 
-const EventDetails = ({ event, member }) => {
+const EventDetails = ({ event, member, session }) => {
   const { status } = useSession();
+
+  useEffect(() => {
+    console.log(session);
+  }, []);
 
   const loading = status === "loading";
 
@@ -42,6 +47,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       member,
+      session,
     },
   };
 }
