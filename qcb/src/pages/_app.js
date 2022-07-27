@@ -27,12 +27,6 @@ function MyApp({ Component, pageProps, session }) {
       <div className="page_container">
         <Head>
           <title>QLD Camping Bears</title>
-          <meta name="description" content="QLD Camping Bears website" />
-          <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-          />
         </Head>
         <div className="header">
           <Header />
