@@ -18,7 +18,8 @@ export const EventInfo = ({ event, verifiedMember }) => {
         <div className={styles.date_time}>
           {event.date} {event.time}
         </div>
-        {verifiedMember && <>VERIFIED MEMBER</>}
+        {<>VERIFIED MEMBER: {verifiedMember.toString()}</>}
+
         <div className={styles.duration}>
           <span className={styles.bold}>Duration:</span> {event.duration}{" "}
           {event.duration < 2 ? "day" : "days"}

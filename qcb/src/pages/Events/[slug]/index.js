@@ -16,12 +16,12 @@ const EventDetails = ({ event }) => {
   useEffect(() => {
     if (session) {
       setUserEmail(session.user.email);
-      console.log("session found.", session.user.email);
+      console.log("session found.", session);
     }
-    setVerified(memberVerified());
-  }, [session]);
+    memberVerified();
+  }, []);
 
-  const memberVerified = async () => {
+  async function memberVerified() {
     const client = new ApolloClient({
       uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
       cache: new InMemoryCache(),
@@ -39,11 +39,11 @@ const EventDetails = ({ event }) => {
     });
     const member = member_data.data.member;
     if (member?.length > 0) {
-      return true;
+      setVerified(true);
     } else {
-      return false;
+      setVerified(false);
     }
-  };
+  }
 
   const loading = status === "loading";
 
