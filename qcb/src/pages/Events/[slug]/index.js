@@ -37,7 +37,7 @@ export async function getServerSideProps({ params }, context) {
       html
     }
     duration
-    eventBanner
+    eventImage
     facebookEventLink
     id
     indigenousLand

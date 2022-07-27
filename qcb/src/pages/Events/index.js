@@ -54,7 +54,7 @@ export default function Events({ events, slides, urls }) {
                   <Link href={eventURLs[index]}>
                     <a>
                       <Image
-                        src={event.eventBanner.url}
+                        src={event.eventImage.url}
                         alt={event.name}
                         height={436}
                         width={833}
@@ -82,7 +82,7 @@ export const getServerSideProps = async (context) => {
       events(where: {date_gt: "${new Date().toISOString().slice(0, 10)}"}) {
         slug
         name
-        eventBanner
+        eventImage
       }
     }, 
       `,
@@ -94,7 +94,7 @@ export const getServerSideProps = async (context) => {
   let urls = [];
 
   events.forEach((event) => {
-    slides = [...slides, event.eventBanner.url];
+    slides = [...slides, event.eventImage.url];
     urls = [...urls, `/Events/${event.slug}`];
   });
 

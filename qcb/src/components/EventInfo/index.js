@@ -6,12 +6,14 @@ export const EventInfo = ({ event }) => {
   return (
     <div className={styles.event_info_container}>
       <div className={styles.info}>
-        <Image
-          src={event.eventBanner.url}
-          alt={event.name}
-          height={436}
-          width={833}
-        />
+        <div className={styles.banner}>
+          <Image
+            src={event.eventImage.url}
+            alt={event.name}
+            height={436}
+            width={833}
+          />
+        </div>
         <div className={styles.date_time}>
           {event.date} {event.time}
         </div>
