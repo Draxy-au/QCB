@@ -9,12 +9,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const EventDetails = ({ event }) => {
-  const { status, data: session } = useSession();
+  const { data: session, status } = useSession();
+  const [userEmail, setUserEmail] = useState();
   const [verified, setVerified] = useState(false);
 
   useEffect(() => {
+    if (session) {
+      setUserEmail(session.user.email);
+    }
     setVerified(memberVerified());
-  }, []);
+  }, [session]);
 
   const memberVerified = async () => {
     const client = new ApolloClient({
@@ -25,7 +29,7 @@ const EventDetails = ({ event }) => {
     const member_data = await client.query({
       query: gql`
         query Events {
-          member(where: { email: "${session.user.email}" }) {
+          member(where: { email: "${userEmail}" }) {
             username
             verifiedMember
           }
@@ -33,7 +37,7 @@ const EventDetails = ({ event }) => {
       `,
     });
     const member = member_data.data.member;
-    if (member.length > 0) {
+    if (member?.length > 0) {
       return true;
     } else {
       return false;
@@ -55,7 +59,7 @@ const EventDetails = ({ event }) => {
       <Navbar current={"Events"} />
       <div className="pages">
         <span className={styles.title}>{event.name}</span>
-        <EventInfo event={event} verifiedMember={verified} />
+        <EventInfo event={event} verifiedMember={verified ? true : false} />
       </div>
     </div>
   );
