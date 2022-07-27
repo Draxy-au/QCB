@@ -1,10 +1,23 @@
 import Navbar from "@components/Navbar";
+import { useSession, getSession } from "next-auth/react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./EventDetails.module.scss";
 import { EventInfo } from "@components/EventInfo";
+import Image from "next/image";
 
 const EventDetails = ({ event, member }) => {
+  const { status } = useSession();
+
+  const loading = status === "loading";
+
+  if (loading) {
+    return (
+      <div className="spinner">
+        <Image priority src={spinner} height="30" width="30" alt="loading..." />
+      </div>
+    );
+  }
   return (
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
