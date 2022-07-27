@@ -19,7 +19,7 @@ const EventDetails = ({ event }) => {
       console.log("session found.", session);
     }
     memberVerified();
-  }, []);
+  }, [session]);
 
   async function memberVerified() {
     const client = new ApolloClient({
