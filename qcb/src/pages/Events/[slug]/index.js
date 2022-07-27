@@ -16,6 +16,7 @@ const EventDetails = ({ event }) => {
   useEffect(() => {
     if (session) {
       setUserEmail(session.user.email);
+      console.log("session found.", session.user.email);
     }
     setVerified(memberVerified());
   }, [session]);
