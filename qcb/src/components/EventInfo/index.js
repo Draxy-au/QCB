@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  registerEventMember,
+  unregisterEventMember,
+} from "src/db/registerEventMember";
 import styles from "./EventInfo.module.scss";
 
 export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
@@ -8,14 +12,12 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
 
   const registerForEvent = async () => {
     setInterested(true);
-    console.log("Member Email:", memberEmail);
-    console.log("Event Slug:", event.slug);
+    registerEventMember(memberEmail, event.slug);
   };
 
   const unRegisterForEvent = async () => {
     setInterested(false);
-    console.log("Member Email:", memberEmail);
-    console.log("Event Slug:", event.slug);
+    unregisterEventMember(memberEmail, event.slug);
   };
 
   return (
