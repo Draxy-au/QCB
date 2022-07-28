@@ -18,14 +18,7 @@ export async function registerEventMember(email, eventSlug) {
         ) {
           id
         }
-        updateMember(
-          data: {events: {connect: {where: {slug: "${eventSlug}"}}}}
-          where: {email: "${email}"}
-        ) {
-          id
-        }
         publishEvent(where: {slug: "${eventSlug}"})
-        publishMember(where: {email: "${email}"})
       }
     `,
   });
@@ -55,15 +48,7 @@ export async function unregisterEventMember(email, eventSlug) {
         ) {
           id
         }
-        updateMember(
-          data: {events: {disconnect: {where: {slug: "${eventSlug}"}}}}
-          where: {email: "${email}"}
-        ) {
-          id
-        }
         publishEvent(where: {slug: "${eventSlug}"})
-        publishMember(where: {email: "${email}"})
-
       }
     `,
   });
