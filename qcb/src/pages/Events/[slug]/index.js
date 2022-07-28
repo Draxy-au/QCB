@@ -123,5 +123,6 @@ export async function getServerSideProps(context) {
     props: {
       event,
     },
+    revalidate: 1,
   };
 }
