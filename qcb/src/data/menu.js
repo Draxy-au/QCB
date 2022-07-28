@@ -13,11 +13,7 @@ const menu_data = [
     title: "Members",
     link: "/Members",
     dropdown: true,
-    submenu: [
-      { title: "Member Benefits", link: "/Members" },
-
-      { title: "Member Portal", link: "/Members/Portal" },
-    ],
+    submenu: [{ title: "Member Portal", link: "/Members/Portal/Dashboard" }],
   },
   {
     title: "Events",
