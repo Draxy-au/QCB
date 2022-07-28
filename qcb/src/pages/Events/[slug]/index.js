@@ -73,8 +73,31 @@ const EventDetails = ({ event }) => {
 export default EventDetails;
 
 export async function getStaticPaths() {
+  const client = new ApolloClient({
+    uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+    cache: new InMemoryCache(),
+  });
+
+  const data = await client.query({
+    query: gql`
+      query PageEvents {
+        events {
+          slug
+        }
+      }
+    `,
+  });
+
+  const paths = data.data.events.map((event) => {
+    return {
+      params: {
+        eventSlug: event.slug,
+      },
+    };
+  });
+
   return {
-    paths: [],
+    paths,
     fallback: false,
   };
 }
@@ -82,7 +105,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const slug = params.slug;
+  const slug = params.eventSlug;
 
   const client = new ApolloClient({
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
