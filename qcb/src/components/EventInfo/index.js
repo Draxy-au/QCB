@@ -26,12 +26,12 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
 
   const registerForEvent = async () => {
     setInterested(true);
-    registerEventMember(memberEmail, event.slug);
+    await registerEventMember(memberEmail, event.slug);
   };
 
   const unRegisterForEvent = async () => {
     setInterested(false);
-    unregisterEventMember(memberEmail, event.slug);
+    await unregisterEventMember(memberEmail, event.slug);
   };
 
   return (
