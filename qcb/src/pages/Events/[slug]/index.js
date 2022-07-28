@@ -91,7 +91,7 @@ export async function getStaticPaths() {
   const paths = data.data.events.map((event) => {
     return {
       params: {
-        eventSlug: event.slug,
+        slug: event.slug,
       },
     };
   });
@@ -105,7 +105,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const slug = params.eventSlug;
+  const slug = params.slug;
 
   const client = new ApolloClient({
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
