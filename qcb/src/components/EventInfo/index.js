@@ -41,7 +41,9 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
         )}
         {verifiedMember && interested && (
           <div className={styles.register}>
-            * Attending
+            <span className={styles.expressed_interest}>
+              * Expressed Attending Event
+            </span>
             <button
               className={styles.register_button}
               onClick={() => unRegisterForEvent()}

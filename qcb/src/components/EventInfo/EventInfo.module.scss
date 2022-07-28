@@ -83,6 +83,10 @@ $signup_button_colour: colours.$white;
       justify-content: flex-start;
       gap: 1rem;
 
+      .expressed_interest {
+        font-weight: 700;
+      }
+
       .register_button {
         background-color: $register_button_background;
         color: $register_button_colour;
