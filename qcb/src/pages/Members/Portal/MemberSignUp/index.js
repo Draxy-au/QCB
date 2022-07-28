@@ -9,10 +9,11 @@ import { MemberDetails } from "@components/MemberDetails";
 import styles from "./MemberSignUp.module.scss";
 import spinner from "@assets/icons/spinner.gif";
 import { MemberPortal } from "@components/MemberPortal";
-import { Router } from "next/router";
+import { useRouter } from "next/router";
 
 export default function MemberSignUp({ session, member }) {
   const { status } = useSession();
+  const router = useRouter();
 
   const loading = status === "loading";
 
@@ -25,7 +26,7 @@ export default function MemberSignUp({ session, member }) {
   }
 
   if (member) {
-    Router.redirect("/Members/Dashboard");
+    router.redirect("/Members/Dashboard");
   } else {
     return (
       <div className={styles.member_signup_page_container}>
