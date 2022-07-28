@@ -25,13 +25,11 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
   const registerForEvent = async () => {
     setInterested(true);
     await registerEventMember(memberEmail, event.slug);
-    router.reload();
   };
 
   const unRegisterForEvent = async () => {
     setInterested(false);
     await unregisterEventMember(memberEmail, event.slug);
-    router.reload();
   };
 
   return (
