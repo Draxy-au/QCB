@@ -63,7 +63,7 @@ const EventDetails = ({ event }) => {
         <EventInfo
           event={event}
           verifiedMember={verified ? true : false}
-          memberEmail={verified ? memberEmail : null}
+          memberEmail={session.user.email}
         />
       </div>
     </div>
