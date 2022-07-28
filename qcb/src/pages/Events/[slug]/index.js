@@ -148,11 +148,13 @@ export async function getStaticProps(context) {
   });
 
   const event = events_data.data.events[0];
+  const notFound = event ? false : true;
 
   return {
     props: {
       event,
     },
     revalidate: 10,
+    notFound,
   };
 }
