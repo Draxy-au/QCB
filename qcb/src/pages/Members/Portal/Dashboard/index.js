@@ -6,14 +6,12 @@ import styles from "./Dashboard.module.scss";
 
 export default function Dashboard({ session, member }) {
   return (
-    <div>
-      <div className={styles.dashboard_container}>
-        <Navbar current={"Members"} />
-        <div>
-          <MemberPortal memberData={member} />
-          <div className={styles.sign_out_button}>
-            <button onClick={() => signOut()}>Sign out</button>
-          </div>
+    <div className={styles.dashboard_container}>
+      <Navbar current={"Members"} />
+      <div>
+        <MemberPortal memberData={member} />
+        <div className={styles.sign_out_button}>
+          <button onClick={() => signOut()}>Sign out</button>
         </div>
       </div>
     </div>
