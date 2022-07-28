@@ -11,7 +11,7 @@ export default function Members() {
         <h1>Members Information Page</h1>
       </div>
       {/* <MemberPortal memberData={[]} /> */}
-      Members of QLD Camping Bears enjoy...
+      <p>Members of QLD Camping Bears enjoy...</p>
     </div>
   );
 }
