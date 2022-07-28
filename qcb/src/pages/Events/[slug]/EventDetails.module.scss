@@ -13,8 +13,8 @@ $back_button_colour: colours.$white;
   .back {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 1rem;
     .back_button {
       background-color: $back_button_background;
