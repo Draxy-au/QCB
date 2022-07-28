@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 const EventDetails = ({ event }) => {
   const { data: session, status } = useSession();
   const [verified, setVerified] = useState(false);
+  const [memberEmail, setMemberEmail] = useState();
 
   useEffect(() => {
     if (session) {
@@ -37,6 +38,7 @@ const EventDetails = ({ event }) => {
     const member = member_data.data.member;
 
     if (member.verifiedMember) {
+      setMemberEmail(email);
       setVerified(true);
     } else {
       setVerified(false);
@@ -58,7 +60,11 @@ const EventDetails = ({ event }) => {
       <Navbar current={"Events"} />
       <div className="pages">
         <span className={styles.title}>{event.name}</span>
-        <EventInfo event={event} verifiedMember={verified ? true : false} />
+        <EventInfo
+          event={event}
+          verifiedMember={verified ? true : false}
+          memberEmail={verified ? memberEmail : null}
+        />
       </div>
     </div>
   );

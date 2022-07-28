@@ -6,6 +6,9 @@ $info_font: "Koho";
 $info_font_size: 1.6rem;
 $bold_colour: colours.$burntorange;
 
+$register_button_background: colours.$sage;
+$register_button_colour: colours.$white;
+
 $map_button_background: colours.$map;
 $map_button_colour: colours.$white;
 
@@ -69,6 +72,19 @@ $signup_button_colour: colours.$white;
       .map_button {
         background-color: $map_button_background;
         color: $map_button_colour;
+      }
+    }
+
+    .register {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .register_button {
+        background-color: $register_button_background;
+        color: $register_button_colour;
       }
     }
 
