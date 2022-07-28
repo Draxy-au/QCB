@@ -1,9 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import styles from "./EventInfo.module.scss";
 
 export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
+  const [interested, setInterested] = useState(false);
+
   const registerForEvent = async () => {
+    setInterested(true);
+    console.log("Member Email:", memberEmail);
+    console.log("Event Slug:", event.slug);
+  };
+
+  const unRegisterForEvent = async () => {
+    setInterested(false);
     console.log("Member Email:", memberEmail);
     console.log("Event Slug:", event.slug);
   };
@@ -19,14 +29,27 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
             width={833}
           />
         </div>
-        <div className={styles.register}>
-          <button
-            className={styles.register_button}
-            onClick={() => registerForEvent()}
-          >
-            Register Interest
-          </button>
-        </div>
+        {verifiedMember && !interested && (
+          <div className={styles.register}>
+            <button
+              className={styles.register_button}
+              onClick={() => registerForEvent()}
+            >
+              Register Interest
+            </button>
+          </div>
+        )}
+        {verifiedMember && interested && (
+          <div className={styles.register}>
+            <h1>I have registered interest for this event.</h1>
+            <button
+              className={styles.register_button}
+              onClick={() => unRegisterForEvent()}
+            >
+              Unregister Interest
+            </button>
+          </div>
+        )}
         <div className={styles.date_time}>
           {event.date} {event.time}
         </div>
