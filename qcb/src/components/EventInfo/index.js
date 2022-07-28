@@ -20,7 +20,7 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
         }
       });
     }
-  }, [event.members, memberEmail]);
+  }, []);
 
   const registerForEvent = async () => {
     setInterested(true);
