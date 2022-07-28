@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   registerEventMember,
   unregisterEventMember,
@@ -9,6 +9,10 @@ import styles from "./EventInfo.module.scss";
 
 export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
   const [interested, setInterested] = useState(false);
+
+  useEffect(() => {
+    console.log(event.members);
+  }, []);
 
   const registerForEvent = async () => {
     setInterested(true);

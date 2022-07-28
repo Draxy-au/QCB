@@ -99,6 +99,7 @@ export async function getServerSideProps(context) {
             indigenousLand
             members {
               username
+              email
             }
             name
             slug
