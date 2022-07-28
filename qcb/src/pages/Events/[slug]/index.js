@@ -152,6 +152,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
+      key: slug,
       event,
     },
     revalidate: 10,
