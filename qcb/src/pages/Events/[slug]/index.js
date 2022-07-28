@@ -7,11 +7,13 @@ import { EventInfo } from "@components/EventInfo";
 import spinner from "@assets/icons/spinner.gif";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const EventDetails = ({ event }) => {
   const { data: session, status } = useSession();
   const [verified, setVerified] = useState(false);
   const [memberEmail, setMemberEmail] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     if (session) {
@@ -45,6 +47,10 @@ const EventDetails = ({ event }) => {
     }
   }
 
+  const goBack = () => {
+    router.push("/Members/Portal/Dashboard");
+  };
+
   const loading = status === "loading";
 
   if (loading) {
@@ -59,6 +65,13 @@ const EventDetails = ({ event }) => {
     <div className={styles.event_details_container}>
       <Navbar current={"Events"} />
       <div className="pages">
+        {verified && (
+          <div className={styles.back}>
+            <button className={styles.back_button} onClick={() => goBack()}>
+              &#xab; Back
+            </button>
+          </div>
+        )}
         <span className={styles.title}>{event.name}</span>
         <EventInfo
           event={event}
