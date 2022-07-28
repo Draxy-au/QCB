@@ -26,7 +26,7 @@ export default function Portal() {
   } else {
     return (
       <div className={styles.portal_page_container}>
-        <Navbar current={"About Us"} />
+        <Navbar current={"Members"} />
         <div className="pages">
           <h1>Member Portal</h1>
           <p>
