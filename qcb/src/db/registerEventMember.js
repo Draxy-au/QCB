@@ -46,7 +46,7 @@ export async function unregisterEventMember(email, eventSlug) {
       mutation UpdateEventMembers {
         updateEvent(
           where: {slug: "${eventSlug}"}
-          data: {members: {disconnect: {where: {email: "${email}"}}}}
+          data: {members: {disconnect: {email: "${email}"}}}
         ) {
           id
         }

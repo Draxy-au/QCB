@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {
   registerEventMember,
@@ -9,6 +10,7 @@ import styles from "./EventInfo.module.scss";
 
 export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
   const [interested, setInterested] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (event.members) {
@@ -23,11 +25,13 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
   const registerForEvent = async () => {
     setInterested(true);
     await registerEventMember(memberEmail, event.slug);
+    router.reload();
   };
 
   const unRegisterForEvent = async () => {
     setInterested(false);
     await unregisterEventMember(memberEmail, event.slug);
+    router.reload();
   };
 
   return (
