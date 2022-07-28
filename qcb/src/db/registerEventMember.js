@@ -24,6 +24,8 @@ export async function registerEventMember(email, eventSlug) {
         ) {
           id
         }
+        publishEvent(where: {slug: "${eventSlug}"})
+        publishMember(where: {email: "${email}"})
       }
     `,
   });
@@ -59,6 +61,9 @@ export async function unregisterEventMember(email, eventSlug) {
         ) {
           id
         }
+        publishEvent(where: {slug: "${eventSlug}"})
+        publishMember(where: {email: "${email}"})
+
       }
     `,
   });
