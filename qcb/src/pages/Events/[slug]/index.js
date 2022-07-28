@@ -72,6 +72,13 @@ const EventDetails = ({ event }) => {
 
 export default EventDetails;
 
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: false,
+  };
+}
+
 export async function getStaticProps(context) {
   const { params } = context;
 
