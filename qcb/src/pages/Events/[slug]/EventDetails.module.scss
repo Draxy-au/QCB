@@ -3,9 +3,24 @@
 
 $page_background: colours.$white;
 
+$back_button_background: colours.$burntorange;
+$back_button_colour: colours.$white;
+
 .event_details_container {
   width: 100%;
   background-color: $page_background;
+
+  .back {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .back_button {
+      background-color: $back_button_background;
+      color: $back_button_colour;
+    }
+  }
 }
 
 .title {
