@@ -12,17 +12,13 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
 
   useEffect(() => {
     if (event.members) {
-      console.log(event.members);
       event.members.forEach((member) => {
-        console.log("check member email:", member.email);
-        console.log("Checking against:", memberEmail);
         if (member.email == memberEmail) {
-          console.log("found member!");
           setInterested(true);
         }
       });
     }
-  }, []);
+  }, [event.members, memberEmail]);
 
   const registerForEvent = async () => {
     setInterested(true);
