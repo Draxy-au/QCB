@@ -13,12 +13,14 @@ export async function registerEventMember(email, eventSlug) {
     mutation: gql`
       mutation UpdateEventMembers {
         updateEvent(
-          data: {members: {connect: {where: {email: "${email}"}}}}
           where: {slug: "${eventSlug}"}
+          data: {members: {connect: {where: {email: "${email}"}}}}
         ) {
           id
         }
-        publishEvent(where: {slug: "${eventSlug}"})
+        publishEvent(where: {slug: "${eventSlug}"}) {
+          id
+        }
       }
     `,
   });
@@ -43,12 +45,14 @@ export async function unregisterEventMember(email, eventSlug) {
     mutation: gql`
       mutation UpdateEventMembers {
         updateEvent(
-          data: {members: {disconnect: {where: {email: "${email}"}}}}
           where: {slug: "${eventSlug}"}
+          data: {members: {disconnect: {where: {email: "${email}"}}}}
         ) {
           id
         }
-        publishEvent(where: {slug: "${eventSlug}"})
+        publishEvent(where: {slug: "${eventSlug}"}) {
+          id
+        }
       }
     `,
   });
