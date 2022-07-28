@@ -11,7 +11,15 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
   const [interested, setInterested] = useState(false);
 
   useEffect(() => {
-    console.log(event.members);
+    if (event.members) {
+      console.log(event.members);
+      event.members.forEach((member) => {
+        if (member.email == memberEmail) {
+          console.log("found member!");
+          setInterested(true);
+        }
+      });
+    }
   }, []);
 
   const registerForEvent = async () => {
