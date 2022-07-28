@@ -41,7 +41,7 @@ export const EventInfo = ({ event, verifiedMember, memberEmail }) => {
         )}
         {verifiedMember && interested && (
           <div className={styles.register}>
-            <h1>I have registered interest for this event.</h1>
+            * Attending
             <button
               className={styles.register_button}
               onClick={() => unRegisterForEvent()}
