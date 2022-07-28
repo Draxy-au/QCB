@@ -72,14 +72,7 @@ const EventDetails = ({ event }) => {
 
 export default EventDetails;
 
-export async function getStaticProps() {
-  return {
-    props: {},
-    revalidate: 1, // In seconds
-  };
-}
-
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { params } = context;
 
   const slug = params.slug;
