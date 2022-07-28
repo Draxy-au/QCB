@@ -11,9 +11,9 @@ const menu_data = [
   },
   {
     title: "Members",
-    link: "/Members",
+    link: "/Members/Portal/Dashboard",
     dropdown: true,
-    submenu: [{ title: "Member Portal", link: "/Members/Portal/Dashboard" }],
+    submenu: [{ title: "Member Benefits", link: "/Members/Benefits" }],
   },
   {
     title: "Events",

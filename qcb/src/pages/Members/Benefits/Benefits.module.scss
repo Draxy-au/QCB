@@ -1,0 +1,9 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$page_background: colours.$white;
+
+.benefits_page_container {
+  width: 100%;
+  background-color: $page_background;
+}
