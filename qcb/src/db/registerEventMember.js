@@ -18,6 +18,12 @@ export async function registerEventMember(email, eventSlug) {
         ) {
           id
         }
+        updateMember(
+          data: {events: {connect: {where: {slug: "${eventSlug}"}}}}
+          where: {email: "${email}"}
+        ) {
+          id
+        }
       }
     `,
   });
@@ -44,6 +50,12 @@ export async function unregisterEventMember(email, eventSlug) {
         updateEvent(
           data: {members: {disconnect: {where: {email: "${email}"}}}}
           where: {slug: "${eventSlug}"}
+        ) {
+          id
+        }
+        updateMember(
+          data: {events: {disconnect: {where: {slug: "${eventSlug}"}}}}
+          where: {email: "${email}"}
         ) {
           id
         }
