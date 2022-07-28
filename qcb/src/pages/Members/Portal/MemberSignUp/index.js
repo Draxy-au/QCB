@@ -26,7 +26,7 @@ export default function MemberSignUp({ session, member }) {
   }
 
   if (member) {
-    router.push("/Members/Dashboard");
+    router.push("/Members/Portal/Dashboard");
   } else {
     return (
       <div className={styles.member_signup_page_container}>
