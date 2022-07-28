@@ -63,7 +63,7 @@ const EventDetails = ({ event }) => {
         <EventInfo
           event={event}
           verifiedMember={verified ? true : false}
-          memberEmail={session.user.email}
+          memberEmail={session?.user.email}
         />
       </div>
     </div>
@@ -72,37 +72,7 @@ const EventDetails = ({ event }) => {
 
 export default EventDetails;
 
-export async function getStaticPaths() {
-  const client = new ApolloClient({
-    uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
-    cache: new InMemoryCache(),
-  });
-
-  const data = await client.query({
-    query: gql`
-      query PageEvents {
-        events {
-          slug
-        }
-      }
-    `,
-  });
-
-  const paths = data.data.events.map((event) => {
-    return {
-      params: {
-        slug: event.slug,
-      },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { params } = context;
 
   const slug = params.slug;
@@ -148,14 +118,10 @@ export async function getStaticProps(context) {
   });
 
   const event = events_data.data.events[0];
-  const notFound = event ? false : true;
 
   return {
     props: {
-      key: slug,
       event,
     },
-    revalidate: 1,
-    notFound,
   };
 }
