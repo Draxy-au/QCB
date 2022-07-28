@@ -155,7 +155,7 @@ export async function getStaticProps(context) {
       key: slug,
       event,
     },
-    revalidate: 10,
+    revalidate: 1,
     notFound,
   };
 }
