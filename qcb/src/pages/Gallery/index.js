@@ -2,11 +2,12 @@ import Navbar from "@components/Navbar";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSession } from "next-auth/client";
+
 import { search, mapImageResources, getFolders } from "@lib/cloudinary";
 
 import styles from "./Gallery.module.scss";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export default function Gallery({
   images: defaultImages,
@@ -14,7 +15,7 @@ export default function Gallery({
   folders,
   totalCount,
 }) {
-  const [session, loading] = useSession();
+  const session = useSession();
   const [images, setImages] = useState(defaultImages);
   const [nextCursor, setNextCursor] = useState(defaultNextCursor);
   const [activeFolder, setActiveFolder] = useState("");
