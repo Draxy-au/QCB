@@ -1,0 +1,84 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$page_background: colours.$white;
+$hover_colour: colours.$upload;
+$upload_button_colour: colours.$upload;
+$load_more_button_colour: colours.$loadmore;
+
+.gallery_container {
+  width: 100%;
+  background-color: $page_background;
+
+  .button_area {
+    display: flex;
+    width: 100%;
+    padding-left: 2rem;
+    gap: 1rem;
+  }
+
+  .upload_button {
+    background-color: $upload_button_colour;
+    cursor: pointer;
+  }
+
+  .load_more_button {
+    background-color: $load_more_button_colour;
+    cursor: pointer;
+  }
+
+  .folders {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    li {
+      width: fit-content;
+      padding: 1rem 1rem;
+
+      &:hover,
+      &[data-active-folder="true"] {
+        border-color: $hover_colour;
+      }
+    }
+
+    button {
+      width: 25rem;
+      height: 5rem;
+      max-height: 5rem;
+      padding: 1rem;
+      margin: 0;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: blueviolet;
+      }
+    }
+  }
+
+  .images {
+    list-style: none;
+    padding: 0 2rem;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 3em;
+  }
+
+  .imageTitle {
+    font-size: 1.4em;
+    margin: 0.4em 0 0;
+  }
+
+  .imageImage {
+    & > div {
+      display: block !important;
+    }
+  }
+}
