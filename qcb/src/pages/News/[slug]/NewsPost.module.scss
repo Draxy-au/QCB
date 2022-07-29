@@ -1,0 +1,12 @@
+@use "@styles/colours";
+@use "@styles/fonts";
+
+$page_background: colours.$white;
+
+$back_button_background: colours.$burntorange;
+$back_button_colour: colours.$white;
+
+.news_post_container {
+  width: 100%;
+  background-color: $page_background;
+}
