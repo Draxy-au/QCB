@@ -24,7 +24,7 @@ export default function Gallery({
     if (status !== "authenticated") {
       return <h1>Unauthorised Access.</h1>;
     }
-  }, [session]);
+  }, []);
 
   async function handleLoadMore(event) {
     event.preventDefault();
