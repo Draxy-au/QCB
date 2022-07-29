@@ -10,18 +10,25 @@ $button_font: "Koho Bold";
   width: 100%;
   background-color: $page_background;
 
-  .sign_out_button {
+  .sign_out {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: $button_font;
-    font-size: 1.6rem;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-    border: none;
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.5rem;
-    margin: 0.2rem;
-    background-color: $signout_button_background;
-    color: $signout_button_colour;
+    .sign_out_button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: $button_font;
+      font-size: 1.6rem;
+
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+      margin: 0.2rem;
+      background-color: $signout_button_background;
+      color: $signout_button_colour;
+    }
   }
 }
