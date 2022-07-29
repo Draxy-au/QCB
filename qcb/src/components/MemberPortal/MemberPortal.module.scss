@@ -10,7 +10,10 @@ $normal_colour: fonts.$normal_colour;
 $normal_font_size: fonts.$normal_font_size;
 
 $page_background: colours.$white;
-$gallery_link_colour: colours.$burntorange_light;
+
+$button_font: "Koho Bold";
+$back_button_background: colours.$gallery;
+$back_button_colour: colours.$white;
 
 .member_portal_container {
   width: 100%;
@@ -80,9 +83,19 @@ $gallery_link_colour: colours.$burntorange_light;
       justify-content: center;
       gap: 1rem;
 
-      a {
+      .gallery_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $button_font;
         font-size: 1.6rem;
-        color: $gallery_link_colour;
+
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        margin: 0.2rem;
+        background-color: $gallery_button_background;
+        color: $gallery_button_colour;
       }
     }
   }

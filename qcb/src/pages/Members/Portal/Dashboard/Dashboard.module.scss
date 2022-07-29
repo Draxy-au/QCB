@@ -2,12 +2,26 @@
 @use "@styles/fonts";
 
 $page_background: colours.$white;
+$signout_button_background: colours.$red;
+$signout_button_colour: colours.$white;
+$button_font: "Koho Bold";
 
 .dashboard_container {
   width: 100%;
   background-color: $page_background;
 
   .sign_out_button {
-    padding-left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $button_font;
+    font-size: 1.6rem;
+
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    margin: 0.2rem;
+    background-color: $signout_button_background;
+    color: $signout_button_colour;
   }
 }

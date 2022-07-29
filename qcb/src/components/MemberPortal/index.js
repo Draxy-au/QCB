@@ -97,7 +97,7 @@ export const MemberPortal = ({ memberData }) => {
         <p>Welcome to the Member Portal, {memberData.username}.</p>
         {newsData && (
           <>
-            <h1>News</h1>
+            <h1>Latest News</h1>
             {newsData.map((post) => (
               <div key={post.id}>
                 <Link href={`/News/${post.slug}`}>
@@ -140,16 +140,11 @@ export const MemberPortal = ({ memberData }) => {
               ))}
           </div>
         </div>
-        <h1>Gallery</h1>
-
-        <div className={styles.gallery_area}>
-          <Image src={pic} alt="" height={80} width={100} />
-          <Image src={pic} alt="" height={80} width={100} />
-          <Image src={pic} alt="" height={80} width={100} />
-        </div>
         <div className={styles.gallery_link}>
-          <Link href="Members/Gallery">
-            <a>Visit gallery</a>
+          <Link href="Gallery">
+            <a>
+              <button className={styles.gallery_button}>Members Gallery</button>
+            </a>
           </Link>
         </div>
       </div>
