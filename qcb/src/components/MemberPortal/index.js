@@ -26,6 +26,7 @@ export const MemberPortal = ({ memberData }) => {
             id
             image
             name
+            slug
             member {
               username
             }
