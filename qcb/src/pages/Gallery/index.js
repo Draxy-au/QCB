@@ -121,42 +121,7 @@ export default function Gallery({
   );
 }
 
-export async function getStaticProps(context) {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/Members/Portal",
-      },
-    };
-  }
-
-  const client = new ApolloClient({
-    uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
-    cache: new InMemoryCache(),
-  });
-
-  const data = await client.query({
-    query: gql`
-      query PageMemberSignUp {
-        member(where: { email: "${session.user.email}" }) {
-          verifiedMember
-        }
-      }
-    `,
-  });
-
-  const member = data.data.member;
-
-  if (!member.verifiedMember) {
-    return {
-      redirect: {
-        destination: "/Members/Portal",
-      },
-    };
-  }
-
+export async function getStaticProps() {
   const results = await search({
     expression: 'folder="qcb_website/gallery"',
   });
