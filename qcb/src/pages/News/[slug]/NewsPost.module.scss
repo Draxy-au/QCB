@@ -15,7 +15,7 @@ $back_button_colour: colours.$white;
     display: flex;
     align-items: flex-start;
     justify-items: flex-start;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
 
     .back_button {
       background-color: $back_button_background;
@@ -33,5 +33,11 @@ $back_button_colour: colours.$white;
 
   .author {
     font-weight: 700;
+  }
+
+  @media (min-width: 40em) {
+    .back {
+      padding: 1rem 2rem;
+    }
   }
 }
