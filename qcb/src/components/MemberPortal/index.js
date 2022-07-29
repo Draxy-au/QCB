@@ -50,7 +50,9 @@ export const MemberPortal = ({ memberData }) => {
     const events_data = await client.query({
       query: gql`
         query Events {
-          events(orderBy: date_ASC) {
+          events(where: {date_gt: "${new Date()
+            .toISOString()
+            .slice(0, 10)}"}, orderBy: date_ASC) {
             date
             id
             name
