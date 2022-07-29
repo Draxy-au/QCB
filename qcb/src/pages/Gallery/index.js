@@ -15,14 +15,14 @@ export default function Gallery({
   folders,
   totalCount,
 }) {
-  const session = useSession();
+  const { data: session, status } = useSession();
   const [images, setImages] = useState(defaultImages);
   const [nextCursor, setNextCursor] = useState(defaultNextCursor);
   const [activeFolder, setActiveFolder] = useState("");
 
   const router = useRouter();
 
-  if (!session) {
+  if (status !== "authenticated") {
     router.push("/Members/Portal");
   }
 
