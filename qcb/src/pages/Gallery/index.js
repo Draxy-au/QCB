@@ -20,9 +20,11 @@ export default function Gallery({
   const [nextCursor, setNextCursor] = useState(defaultNextCursor);
   const [activeFolder, setActiveFolder] = useState("");
 
-  if (status !== "authenticated") {
-    return <h1>Unauthorised Access.</h1>;
-  }
+  useEffect(() => {
+    if (status !== "authenticated") {
+      return <h1>Unauthorised Access.</h1>;
+    }
+  }, [session]);
 
   async function handleLoadMore(event) {
     event.preventDefault();
