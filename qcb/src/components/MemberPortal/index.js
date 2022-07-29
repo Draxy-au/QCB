@@ -84,6 +84,7 @@ export const MemberPortal = ({ memberData }) => {
   };
 
   useEffect(() => {
+    getNews();
     getEvents();
     getRegistedEvents(memberData.username);
   }, []);
