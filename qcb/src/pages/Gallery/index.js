@@ -87,12 +87,16 @@ export default function Gallery({
               <li key={image.id}>
                 <a href={image.link} rel="noreferrer">
                   <div className={styles.imageImage}>
-                    <Image
-                      width={image.width}
-                      height={image.height}
-                      src={image.image}
-                      alt=""
-                    />
+                    <Link href={image.image}>
+                      <a target="_blank">
+                        <Image
+                          width={image.width}
+                          height={image.height}
+                          src={image.image}
+                          alt=""
+                        />
+                      </a>
+                    </Link>
                   </div>
                 </a>
               </li>
