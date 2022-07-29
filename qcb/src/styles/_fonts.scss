@@ -6,7 +6,7 @@ $button_colour: colours.$white;
 
 $heading_font: "Koho Bold";
 $heading_colour: colours.$burntorange;
-$heading_font_size: 1.8rem;
+$heading_font_size: 2.4rem;
 
 $normal_font: "Koho";
 $normal_colour: colours.$black;
@@ -69,12 +69,12 @@ $normal_font_size: 1.6rem;
 }
 
 .normal_text {
-  font-family: "Koho";
-  font-size: 1.6em;
+  font-family: $normal_font;
+  font-size: $normal_font_size;
   padding: 1em 2%;
 
   p {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
   }
 }
 
@@ -86,7 +86,7 @@ $normal_font_size: 1.6rem;
 }
 
 .pages {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   //padding-left: 2rem;
   width: 100%;
 
@@ -94,16 +94,16 @@ $normal_font_size: 1.6rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-family: "Koho Bold";
-    font-size: 1.5rem;
-    color: colours.$burntorange;
+    font-family: $heading_font;
+    font-size: $heading_font_size;
+    color: $heading_colour;
     line-height: 1rem;
     padding: 0 2%;
   }
 
   p {
-    font-family: "Koho";
-    font-size: 1.2rem;
+    font-family: $normal_font;
+    font-size: $normal_font_size;
     padding: 1em 2%;
   }
 
@@ -119,8 +119,8 @@ $normal_font_size: 1.6rem;
     text-align: left;
 
     li {
-      font-family: "Koho";
-      font-size: 1.2rem;
+      font-family: $normal_font;
+      font-size: $normal_font_size;
     }
   }
 

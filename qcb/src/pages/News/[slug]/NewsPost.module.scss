@@ -3,10 +3,35 @@
 
 $page_background: colours.$white;
 
-$back_button_background: colours.$burntorange;
+$back_button_background: colours.$sage;
 $back_button_colour: colours.$white;
 
 .news_post_container {
   width: 100%;
   background-color: $page_background;
+
+  .back {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-items: flex-start;
+    padding: 1rem 2rem;
+
+    .back_button {
+      background-color: $back_button_background;
+      color: $back_button_colour;
+    }
+  }
+
+  .date {
+    font-weight: 700;
+  }
+
+  .image {
+    padding: 0 2rem;
+  }
+
+  .author {
+    font-weight: 700;
+  }
 }

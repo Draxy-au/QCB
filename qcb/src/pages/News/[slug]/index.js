@@ -2,19 +2,46 @@ import { getSession, useSession } from "next-auth/react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 import styles from "./NewsPost.module.scss";
+import Navbar from "@components/Navbar";
+import Image from "next/image";
 
 export default function NewsPost({ post }) {
+  const goBack = () => {
+    router.push("/Members/Portal/Dashboard");
+  };
+
   return (
     <div className={styles.news_post_container}>
-      <h1>News Post</h1>
-      <p>{post.name}</p>
-      <p>{post.date}</p>
-      <p>{post.member.username}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: post.content.html,
-        }}
-      />
+      <Navbar current="Members" />
+      <div className="pages">
+        <div className={styles.back}>
+          <button className={styles.back_button} onClick={() => goBack()}>
+            &#xab; Back
+          </button>
+        </div>
+        <h1>{post.name}</h1>
+        <p>
+          <span className={styles.date}>{post.date}</span> -{" "}
+          <span className={styles.author}>@{post.member.username}</span>
+        </p>
+        {post.image && (
+          <div className={styles.image}>
+            <Image
+              src={post.image.url}
+              alt={post.name}
+              height={436}
+              width={833}
+            />
+          </div>
+        )}
+        <span className={styles.content}>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.html,
+            }}
+          />
+        </span>
+      </div>
     </div>
   );
 }
@@ -23,13 +50,13 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const session = await getSession(context);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/Members/Portal",
-      },
-    };
-  }
+  // if (!session) {
+  //   return {
+  //     redirect: {
+  //       destination: "/Members/Portal",
+  //     },
+  //   };
+  // }
 
   const slug = params.slug;
 
