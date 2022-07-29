@@ -8,8 +8,37 @@ import pic from "public/images/card_1.jpg";
 import Link from "next/link";
 
 export const MemberPortal = ({ memberData }) => {
+  const [newsData, setNewsData] = useState([]);
   const [eventData, setEventData] = useState([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
+
+  const getNews = async () => {
+    const client = new ApolloClient({
+      uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
+      cache: new InMemoryCache(),
+    });
+
+    const news_data = await client.query({
+      query: gql`
+        query News {
+          posts(orderBy: date_ASC) {
+            date
+            id
+            image
+            name
+            member {
+              username
+            }
+            content {
+              html
+            }
+          }
+        }
+      `,
+    });
+
+    setNewsData(news_data.data.posts);
+  };
 
   const getEvents = async () => {
     const client = new ApolloClient({
@@ -64,11 +93,20 @@ export const MemberPortal = ({ memberData }) => {
       <div className={styles.portal}>
         <h1>Member Portal</h1>
         <p>Welcome to the Member Portal, {memberData.username}.</p>
-        <h1>News</h1>
-        <p>
-          13-Oct Consent Matters <br />
-          10-Oct New Merch in Shop!
-        </p>
+        {newsData && (
+          <>
+            <h1>News</h1>
+            {newsData.map((post) => (
+              <div key={post.id}>
+                <Link href={`/News/${post.slug}`}>
+                  <a>
+                    {post.date} - {post.name}
+                  </a>
+                </Link>
+              </div>
+            ))}
+          </>
+        )}
         {registeredEvents && (
           <div className={styles.registered_events_section}>
             <h1>Your Registered Events</h1>
