@@ -50,13 +50,13 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const session = await getSession(context);
 
-  // if (!session) {
-  //   return {
-  //     redirect: {
-  //       destination: "/Members/Portal",
-  //     },
-  //   };
-  // }
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/Members/Portal",
+      },
+    };
+  }
 
   const slug = params.slug;
 
