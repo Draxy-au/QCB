@@ -20,12 +20,6 @@ export default function Gallery({
   const [nextCursor, setNextCursor] = useState(defaultNextCursor);
   const [activeFolder, setActiveFolder] = useState("");
 
-  useEffect(() => {
-    if (status !== "authenticated") {
-      return <h1>Unauthorised Access.</h1>;
-    }
-  }, []);
-
   async function handleLoadMore(event) {
     event.preventDefault();
 
@@ -75,60 +69,62 @@ export default function Gallery({
 
   return (
     <div className={styles.gallery_container}>
-      <div className="pages">
-        <Navbar current="Members" />
-        <h1>Gallery</h1>
+      {status === "authenticated" && (
+        <div className="pages">
+          <Navbar current="Members" />
+          <h1>Gallery</h1>
 
-        <ul className={styles.folders} onClick={handleOnFolderClick}>
-          {folders.map((folder) => {
-            return (
-              <li key={folder.path}>
-                <button data-folder-path={folder.path}>{folder.name}</button>
-              </li>
-            );
-          })}
-        </ul>
+          <ul className={styles.folders} onClick={handleOnFolderClick}>
+            {folders.map((folder) => {
+              return (
+                <li key={folder.path}>
+                  <button data-folder-path={folder.path}>{folder.name}</button>
+                </li>
+              );
+            })}
+          </ul>
 
-        <ul className={styles.images}>
-          {images.map((image) => {
-            return (
-              <li key={image.id}>
-                <a href={image.link} rel="noreferrer">
-                  <div className={styles.imageImage}>
-                    <Link href={image.image}>
-                      <a target="_blank">
-                        <Image
-                          width={image.width}
-                          height={image.height}
-                          src={image.image}
-                          alt=""
-                        />
-                      </a>
-                    </Link>
-                  </div>
+          <ul className={styles.images}>
+            {images.map((image) => {
+              return (
+                <li key={image.id}>
+                  <a href={image.link} rel="noreferrer">
+                    <div className={styles.imageImage}>
+                      <Link href={image.image}>
+                        <a target="_blank">
+                          <Image
+                            width={image.width}
+                            height={image.height}
+                            src={image.image}
+                            alt=""
+                          />
+                        </a>
+                      </Link>
+                    </div>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <div className={styles.button_area}>
+            {images.length < totalCount && (
+              <button
+                className={styles.load_more_button}
+                onClick={handleLoadMore}
+              >
+                Load More...
+              </button>
+            )}
+            {activeFolder != "" && (
+              <Link href={`Gallery/Upload/${activeFolder.slice(20)}`}>
+                <a>
+                  <button className={styles.upload_button}>Upload Photo</button>
                 </a>
-              </li>
-            );
-          })}
-        </ul>
-        <div className={styles.button_area}>
-          {images.length < totalCount && (
-            <button
-              className={styles.load_more_button}
-              onClick={handleLoadMore}
-            >
-              Load More...
-            </button>
-          )}
-          {activeFolder != "" && (
-            <Link href={`Gallery/Upload/${activeFolder.slice(20)}`}>
-              <a>
-                <button className={styles.upload_button}>Upload Photo</button>
-              </a>
-            </Link>
-          )}
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
