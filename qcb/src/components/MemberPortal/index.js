@@ -96,7 +96,7 @@ export const MemberPortal = ({ memberData }) => {
         <h1>Member Portal</h1>
         <p>Welcome to the Member Portal, {memberData.username}.</p>
         <div className={styles.gallery_link}>
-          <Link href="Gallery">
+          <Link href="/Gallery">
             <a>
               <button className={styles.gallery_button}>Members Gallery</button>
             </a>
