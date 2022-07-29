@@ -6,6 +6,7 @@ $hover_colour: colours.$upload;
 $upload_button_colour: colours.$upload;
 $back_button_background: colours.$sage;
 $back_button_colour: colours.$white;
+$button_font: "Koho Bold";
 
 .upload_container {
   width: 100%;
@@ -19,6 +20,16 @@ $back_button_colour: colours.$white;
     padding: 1rem 1rem;
 
     .back_button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: $button_font;
+      font-size: 1.6rem;
+
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+      margin: 0.2rem;
       background-color: $back_button_background;
       color: $back_button_colour;
     }
