@@ -10,7 +10,11 @@ export default function NewsPost({ post }) {
       <p>{post.name}</p>
       <p>{post.date}</p>
       <p>{post.member.username}</p>
-      <div dangerouslySetInnerHTML={post.content.html} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: post.content.html,
+        }}
+      />
     </div>
   );
 }
