@@ -95,6 +95,13 @@ export const MemberPortal = ({ memberData }) => {
       <div className={styles.portal}>
         <h1>Member Portal</h1>
         <p>Welcome to the Member Portal, {memberData.username}.</p>
+        <div className={styles.gallery_link}>
+          <Link href="Gallery">
+            <a>
+              <button className={styles.gallery_button}>Members Gallery</button>
+            </a>
+          </Link>
+        </div>
         {newsData && (
           <>
             <h1>Latest News</h1>
@@ -139,13 +146,6 @@ export const MemberPortal = ({ memberData }) => {
                 </div>
               ))}
           </div>
-        </div>
-        <div className={styles.gallery_link}>
-          <Link href="Gallery">
-            <a>
-              <button className={styles.gallery_button}>Members Gallery</button>
-            </a>
-          </Link>
         </div>
       </div>
     </div>
