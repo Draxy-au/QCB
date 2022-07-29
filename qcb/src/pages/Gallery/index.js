@@ -2,11 +2,11 @@ import Navbar from "@components/Navbar";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getSession } from "next-auth/react";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { useSession } from "next-auth/client";
 import { search, mapImageResources, getFolders } from "@lib/cloudinary";
 
 import styles from "./Gallery.module.scss";
+import { useRouter } from "next/router";
 
 export default function Gallery({
   images: defaultImages,
@@ -14,9 +14,16 @@ export default function Gallery({
   folders,
   totalCount,
 }) {
+  const [session, loading] = useSession();
   const [images, setImages] = useState(defaultImages);
   const [nextCursor, setNextCursor] = useState(defaultNextCursor);
   const [activeFolder, setActiveFolder] = useState("");
+
+  const router = useRouter();
+
+  if (!session) {
+    router.push("/Members/Portal");
+  }
 
   async function handleLoadMore(event) {
     event.preventDefault();
