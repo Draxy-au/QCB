@@ -6,7 +6,7 @@ import Image from "next/image";
 import { search, mapImageResources, getFolders } from "@lib/cloudinary";
 
 import styles from "./Gallery.module.scss";
-import { useRouter } from "next/router";
+
 import { useSession } from "next-auth/react";
 
 export default function Gallery({
@@ -20,10 +20,8 @@ export default function Gallery({
   const [nextCursor, setNextCursor] = useState(defaultNextCursor);
   const [activeFolder, setActiveFolder] = useState("");
 
-  const router = useRouter();
-
   if (status !== "authenticated") {
-    router.push("/Members/Portal");
+    return <h1>Unauthorised Access.</h1>;
   }
 
   async function handleLoadMore(event) {
