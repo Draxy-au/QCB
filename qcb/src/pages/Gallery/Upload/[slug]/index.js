@@ -30,6 +30,8 @@ export default function Upload({ slug }) {
   async function handleOnSubmit(event) {
     event.preventDefault();
 
+    setUploading(true);
+
     const form = event.currentTarget;
     const fileInput = Array.from(form.elements).find(
       ({ name }) => name === "file"
@@ -64,6 +66,7 @@ export default function Upload({ slug }) {
 
     // setImageSrc(data.secure_url);
     // setUploadData(data);
+    setUploading(false);
     router.push("/Gallery");
   }
 
