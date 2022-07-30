@@ -47,11 +47,9 @@ export default function Gallery({
     setImages([]);
   }
 
-  useEffect =
-    (() => {
-      console.log("folders", folders);
-    },
-    []);
+  useEffect(() => {
+    console.log("folders", folders);
+  }, []);
 
   useEffect(() => {
     (async function run() {
