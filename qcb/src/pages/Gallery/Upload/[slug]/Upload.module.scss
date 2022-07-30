@@ -12,6 +12,16 @@ $button_font: "Koho Bold";
   width: 100%;
   background-color: $page_background;
 
+  .uploading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Koho Bold";
+    font-size: 2rem;
+    color: colours.$sage;
+  }
+
   .back {
     width: 100%;
     display: flex;

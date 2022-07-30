@@ -84,8 +84,8 @@ export default function Upload({ slug }) {
       </div>
       <div className={styles.upload_area}>
         {uploading && (
-          <div>
-            <Image src={spinner} alt="" height={30} width={30} />
+          <div className={styles.uploading}>
+            Uploading... <Image src={spinner} alt="" height={30} width={30} />
           </div>
         )}
         {!uploading && (
