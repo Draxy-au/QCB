@@ -37,21 +37,31 @@ export default function Upload({ slug }) {
 
     for (const file of fileInput.files) {
       formData.append("file", file);
+      formData.append("folder", `qcb_website/gallery/${slug}`);
+      formData.append("upload_preset", `qcb_uploads`);
+
+      await fetch(
+        `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      ).then((r) => r.json());
     }
 
-    formData.append("folder", `qcb_website/gallery/${slug}`);
-    formData.append("upload_preset", `qcb_uploads`);
+    // formData.append("folder", `qcb_website/gallery/${slug}`);
+    // formData.append("upload_preset", `qcb_uploads`);
 
-    const data = await fetch(
-      `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    ).then((r) => r.json());
+    // const data = await fetch(
+    //   `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
+    //   {
+    //     method: "POST",
+    //     body: formData,
+    //   }
+    // ).then((r) => r.json());
 
-    setImageSrc(data.secure_url);
-    setUploadData(data);
+    // setImageSrc(data.secure_url);
+    // setUploadData(data);
     router.push("/Gallery");
   }
 
