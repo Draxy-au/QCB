@@ -42,9 +42,11 @@ export default function Gallery({
 
   function handleOnFolderClick(event) {
     const folderPath = event.target.dataset.folderPath;
-    setActiveFolder(folderPath);
-    setNextCursor(undefined);
-    setImages([]);
+    if (activeFolder !== folderPath) {
+      setActiveFolder(folderPath);
+      setNextCursor(undefined);
+      setImages([]);
+    }
   }
 
   useEffect(() => {
