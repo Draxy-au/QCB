@@ -48,10 +48,6 @@ export default function Gallery({
   }
 
   useEffect(() => {
-    console.log("folders", folders);
-  }, []);
-
-  useEffect(() => {
     (async function run() {
       const results = await fetch("/api/search", {
         method: "POST",
