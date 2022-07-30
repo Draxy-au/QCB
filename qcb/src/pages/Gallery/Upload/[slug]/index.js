@@ -37,7 +37,7 @@ export default function Upload({ slug }) {
       ({ name }) => name === "file"
     );
 
-    const formData = new FormData();
+    let formData = new FormData();
 
     for (const file of fileInput.files) {
       formData.append("file", file);
@@ -51,6 +51,7 @@ export default function Upload({ slug }) {
           body: formData,
         }
       ).then((r) => r.json());
+      formData = new FormData();
     }
 
     // formData.append("folder", `qcb_website/gallery/${slug}`);
