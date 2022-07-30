@@ -75,7 +75,7 @@ export default function Upload({ slug }) {
           onSubmit={handleOnSubmit}
         >
           <p>
-            <input type="file" name="file" />
+            <input type="file" name="file" multiple="multiple" />
           </p>
 
           <div className={styles.upload_image_container}>
