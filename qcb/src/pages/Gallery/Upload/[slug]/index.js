@@ -4,11 +4,13 @@ import styles from "./Upload.module.scss";
 import { getSession } from "next-auth/react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import spinner from "@assets/icons/spinner.gif";
+import Image from "next/image";
 
 export default function Upload({ slug }) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
+  const [uploading, setUploading] = useState(false);
 
   const router = useRouter();
 
@@ -78,31 +80,38 @@ export default function Upload({ slug }) {
         </button>
       </div>
       <div className={styles.upload_area}>
-        <form
-          className={styles.form}
-          method="post"
-          onChange={handleOnChange}
-          onSubmit={handleOnSubmit}
-        >
-          <p>
-            <input type="file" name="file" multiple="multiple" />
-          </p>
-
-          <div className={styles.upload_image_container}>
-            <img src={imageSrc} alt="" height={350} />
+        {uploading && (
+          <div>
+            <Image src={spinner} alt="" height={30} width={30} />
           </div>
-          {imageSrc && !uploadData && (
+        )}
+        {!uploading && (
+          <form
+            className={styles.form}
+            method="post"
+            onChange={handleOnChange}
+            onSubmit={handleOnSubmit}
+          >
             <p>
-              <button>Upload Files</button>
+              <input type="file" name="file" multiple="multiple" />
             </p>
-          )}
 
-          {uploadData && (
-            <code>
-              <pre>{JSON.stringify(uploadData, null, 2)}</pre>
-            </code>
-          )}
-        </form>
+            <div className={styles.upload_image_container}>
+              <img src={imageSrc} alt="" height={350} />
+            </div>
+            {imageSrc && !uploadData && (
+              <p>
+                <button>Upload Files</button>
+              </p>
+            )}
+
+            {uploadData && (
+              <code>
+                <pre>{JSON.stringify(uploadData, null, 2)}</pre>
+              </code>
+            )}
+          </form>
+        )}
       </div>
     </div>
   );
