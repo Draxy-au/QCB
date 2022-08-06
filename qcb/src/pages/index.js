@@ -14,6 +14,8 @@ export default function Home({ cards, slides }) {
   const [slideImages, setSlideImages] = useState();
   const [slideLinks, setSlideLinks] = useState();
 
+  // Fun
+
   useEffect(() => {
     setCardList(cards);
     setSlideList(slides);
