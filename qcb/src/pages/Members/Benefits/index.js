@@ -47,5 +47,6 @@ export async function getStaticProps() {
     props: {
       benefits,
     },
+    revalidate: 10,
   };
 }
