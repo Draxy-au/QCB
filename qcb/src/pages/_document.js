@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <meta name="description" content="QLD Camping Bears website" />
 
+        <meta property="og:site_name" content="QLD Camping Bears"></meta>
         <meta property="og:title" content="QLD Camping Bears" />
         <meta
           property="og:description"
