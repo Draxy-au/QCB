@@ -5,6 +5,19 @@ export default function Document() {
     <Html>
       <Head>
         <meta name="description" content="QLD Camping Bears website" />
+
+        <meta property="og:title" content="QLD Camping Bears" />
+        <meta
+          property="og:description"
+          content="QCB are an LGBTIQ+ social group based in South East Queensland, founded in 2020 to enjoy the camping experience whilst having fun events throughout the year."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="www.qldcampingbears.com.au" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/queenslandcampingbears/image/upload/v1660073029/qcb_website/opengraph/OpenGraph_jgshzf.jpg"
+        />
+
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
