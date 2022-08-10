@@ -23,16 +23,16 @@ const menu_data = [
       { title: "Camping Essentials", link: "/Events/CampingEssentials" },
     ],
   },
-  {
-    title: "Shop",
-    link: "/Shop",
-    dropdown: true,
-    submenu: [
-      { title: "Limited Sale!", link: "/Shop/Sale" },
-      { title: "QCB Merch", link: "/Shop/Merch" },
-      { title: "Camping Essentials", link: "/Shop/Camping" },
-    ],
-  },
+  // {
+  //   title: "Shop",
+  //   link: "/Shop",
+  //   dropdown: true,
+  //   submenu: [
+  //     { title: "Limited Sale!", link: "/Shop/Sale" },
+  //     { title: "QCB Merch", link: "/Shop/Merch" },
+  //     { title: "Camping Essentials", link: "/Shop/Camping" },
+  //   ],
+  // },
 ];
 
 export default menu_data;
