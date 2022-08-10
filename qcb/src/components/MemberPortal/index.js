@@ -104,7 +104,7 @@ export const MemberPortal = ({ memberData }) => {
             </a>
           </Link>
         </div>
-        {newsData && (
+        {newsData && newsData.length > 0 && (
           <>
             <h1>Latest News</h1>
             {newsData.map((post) => (
@@ -118,7 +118,7 @@ export const MemberPortal = ({ memberData }) => {
             ))}
           </>
         )}
-        {registeredEvents && (
+        {registeredEvents && registeredEvents.length > 0 && (
           <div className={styles.registered_events_section}>
             <h1>Your Registered Events</h1>
             <div className={styles.registered_events}>
