@@ -58,6 +58,7 @@ export default async function addMember(memberData) {
   });
 
   if (newUser) {
+    console.log("new user made, sending email notif");
     emailjs.sendForm(
       "service_c4m64ap",
       "template_7w8f1hl",
