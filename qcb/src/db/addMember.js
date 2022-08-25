@@ -58,13 +58,26 @@ export default async function addMember(memberData) {
   });
 
   if (newUser) {
-    console.log("new user made, sending email notif");
-    emailjs.sendForm(
-      "service_c4m64ap",
-      "template_7w8f1hl",
-      { message: `New Account Created: ${memberData.userEmail}` },
-      "nZ3LPq50mjcBCplJA"
-    );
+    var templateParams = {
+      to_name: "QLD CAMPING BEARS",
+      from_name: "Website Admin",
+      message_html: `New Account Created for ${memberData.userEmail}`,
+    };
+    emailjs
+      .sendForm(
+        "service_c4m64ap",
+        "template_7w8f1hl",
+        templateParams,
+        "nZ3LPq50mjcBCplJA"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
     return true;
   } else {
     return false;
