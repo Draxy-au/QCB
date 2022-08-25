@@ -1,11 +1,13 @@
 import validateUser from "@util/validateUser";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import addMember from "src/db/addMember";
 import styles from "./MemberDetails.module.scss";
 
 export const MemberDetails = ({ email }) => {
   const router = useRouter();
+  const form = useRef();
 
   const [userEmail, setUserEmail] = useState(email);
   const [userName, setUserName] = useState("");
@@ -66,6 +68,22 @@ export const MemberDetails = ({ email }) => {
       if (await addMember(newUserData)) {
         //successfully created new user
         console.log("New user created");
+
+        emailjs
+          .sendForm(
+            "service_c4m64ap",
+            "template_7w8f1hl",
+            form.current,
+            "nZ3LPq50mjcBCplJA"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
         router.push("/Members/Processing");
       } else {
         console.log("Error.");
@@ -96,7 +114,11 @@ export const MemberDetails = ({ email }) => {
             you know you can access the Member Portal!
           </p>
         </div>
-        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+        <form
+          ref={form}
+          className={styles.form}
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div className={styles.email}>
             <label>Email:</label>
             <input
@@ -279,6 +301,11 @@ export const MemberDetails = ({ email }) => {
                 {error}
               </div>
             ))}
+          <input
+            name="message"
+            style={{ display: "none" }}
+            value="New User Created"
+          />
           <div className={styles.submit_button}>
             <button type="submit">Submit</button>
           </div>

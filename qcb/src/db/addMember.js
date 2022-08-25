@@ -1,5 +1,4 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import emailjs from "@emailjs/browser";
 
 export default async function addMember(memberData) {
   const client = new ApolloClient({
@@ -58,26 +57,6 @@ export default async function addMember(memberData) {
   });
 
   if (newUser) {
-    var templateParams = {
-      to_name: "QLD CAMPING BEARS",
-      from_name: "Website Admin",
-      message_html: `New Account Created for ${memberData.userEmail}`,
-    };
-    emailjs
-      .sendForm(
-        "service_c4m64ap",
-        "template_7w8f1hl",
-        templateParams,
-        "nZ3LPq50mjcBCplJA"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
     return true;
   } else {
     return false;
