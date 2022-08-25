@@ -62,6 +62,14 @@ export const getServerSideProps = async (context) => {
 
   const member = data.data.member;
 
+  if (!member.username) {
+    return {
+      redirect: {
+        destination: "/Members/Processing",
+      },
+    };
+  }
+
   return {
     props: {
       session,
