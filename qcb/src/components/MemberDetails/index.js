@@ -38,6 +38,7 @@ export const MemberDetails = ({ email }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("Adding User.");
     const newUserData = {
       userEmail,
       userName,
