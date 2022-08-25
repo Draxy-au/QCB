@@ -6,8 +6,16 @@ import styles from "./MemberPortal.module.scss";
 
 import pic from "public/images/card_1.jpg";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const MemberPortal = ({ memberData }) => {
+  const router = useRouter();
+  const check = useMemo(() => {
+    if (!memberData || !memberData.username) {
+      router.push("/Members/Protal/Processing");
+    }
+  }, []);
+
   const [newsData, setNewsData] = useState([]);
   const [eventData, setEventData] = useState([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
