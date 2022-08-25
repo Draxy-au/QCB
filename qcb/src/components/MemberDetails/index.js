@@ -65,8 +65,10 @@ export const MemberDetails = ({ email }) => {
       // Add user to Hygraph (awaiting verification)
       if (await addMember(newUserData)) {
         //successfully created new user
+        console.log("New user created");
         router.push("/Members/Processing");
       } else {
+        console.log("Error.");
         setRegistrationError(true);
       }
     }
