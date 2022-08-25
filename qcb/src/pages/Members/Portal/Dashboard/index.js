@@ -34,12 +34,6 @@ export const getServerSideProps = async (context) => {
   const client = new ApolloClient({
     uri: "https://api-ap-southeast-2.hygraph.com/v2/cl5nm23h70znu01ugcgu20nyv/master",
     cache: new InMemoryCache(),
-  }).catch((err) => {
-    return {
-      redirect: {
-        destination: "/Members/Processing",
-      },
-    };
   });
 
   const data = await client.query({
@@ -65,6 +59,14 @@ export const getServerSideProps = async (context) => {
       }
     `,
   });
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/Members/Processing",
+      },
+    };
+  }
 
   const member = data.data.member;
 
