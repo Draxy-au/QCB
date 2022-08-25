@@ -60,7 +60,7 @@ export const getServerSideProps = async (context) => {
     `,
   });
 
-  if (!data) {
+  if (!data.data.member) {
     return {
       redirect: {
         destination: "/Members/Processing",
