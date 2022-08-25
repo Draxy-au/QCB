@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import emailjs from "@emailjs/browser";
 
 export default async function addMember(memberData) {
   const client = new ApolloClient({
@@ -57,6 +58,12 @@ export default async function addMember(memberData) {
   });
 
   if (newUser) {
+    emailjs.sendForm(
+      "service_c4m64ap",
+      "template_7w8f1hl",
+      { message: `New Account Created: ${memberData.userEmail}` },
+      "nZ3LPq50mjcBCplJA"
+    );
     return true;
   } else {
     return false;
