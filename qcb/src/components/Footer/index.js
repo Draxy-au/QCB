@@ -19,14 +19,14 @@ export default function index() {
       <div className={styles.socials}>
         <a
           target="_blank"
-          href="https://twitter.com/"
+          href="https://www.facebook.com/groups/256763945352771"
           rel="noopener noreferrer"
         >
           <Image height={"30px"} width={"30px"} src={facebook} alt="Facebook" />
         </a>
         <a
           target="_blank"
-          href="https://twitter.com/"
+          href="https://www.instagram.com/qldcampingbears/"
           rel="noopener noreferrer"
         >
           <Image
