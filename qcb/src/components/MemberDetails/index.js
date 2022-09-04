@@ -288,7 +288,7 @@ export const MemberDetails = ({ email }) => {
             <label>
               Terms and Conditions (
               <Link href="/Members/Portal/Terms">
-                <a target={"_blank"}>LINK</a>
+                <a target={"_blank"}>View Terms</a>
               </Link>
               )
             </label>
