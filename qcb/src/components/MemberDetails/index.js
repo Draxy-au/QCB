@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import addMember from "src/db/addMember";
 import styles from "./MemberDetails.module.scss";
+import Link from "next/link";
 
 export const MemberDetails = ({ email }) => {
   const router = useRouter();
@@ -284,7 +285,13 @@ export const MemberDetails = ({ email }) => {
             />
           </div>
           <div className={styles.terms_and_conditions}>
-            <label>Terms and Conditions (LINK)</label>
+            <label>
+              Terms and Conditions (
+              <Link href="/Members/Terms">
+                <a target={"_blank"}>LINK</a>
+              </Link>
+              )
+            </label>
             <div className={styles.checkbox}>
               <input
                 type="checkbox"
