@@ -8,6 +8,8 @@ $page_background: colours.$white;
 $label_colour: colours.$burntorange;
 $input_colour: colours.$sage;
 
+$link_colour: colours.$loadmore;
+
 $submit_background: colours.$sage;
 $submit_colour: colours.$white;
 
@@ -48,6 +50,10 @@ $error_colour: colours.$red_light;
       color: $submit_colour;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
+    }
+
+    a {
+      color: $link_colour;
     }
   }
 
