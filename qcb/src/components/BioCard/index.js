@@ -2,7 +2,13 @@ import Image from "next/image";
 
 import styles from "./BioCard.module.scss";
 
-export const BioCard = ({ photo, name, description, flip = false }) => {
+export const BioCard = ({
+  photo,
+  name,
+  location,
+  description,
+  flip = false,
+}) => {
   return (
     <div className={styles.biocard_container}>
       {flip && (
@@ -36,6 +42,7 @@ export const BioCard = ({ photo, name, description, flip = false }) => {
           <div className={styles.info}>
             <div className={`className="pages"  ${styles.name}`}>
               <h1>{name}</h1>
+              <h2>{location}</h2>
             </div>
             <div className={`${styles.description}`}>
               <div

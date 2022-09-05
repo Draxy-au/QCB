@@ -18,6 +18,7 @@ export default function OurCommittee({ bios }) {
             <BioCard
               photo={item.image.url}
               name={item.name}
+              location={item.location}
               description={item.content.html}
               flip={index % 2 == 0 ? false : false} // change to true for alternate flipping
             />
@@ -39,6 +40,7 @@ export async function getStaticProps() {
         bios {
           id
           name
+          location
           content {
             html
           }

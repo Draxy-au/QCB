@@ -2,6 +2,7 @@
 @use "@styles/colours";
 
 $name_colour: colours.$burntorange;
+$location_colour: colours.$sage;
 
 .biocard_container {
   width: 100%;
@@ -32,10 +33,15 @@ $name_colour: colours.$burntorange;
       max-width: 90%;
       min-height: 2rem;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: center;
       color: $name_colour;
       padding-left: 1rem;
+
+      h2 {
+        color: $location_colour;
+      }
     }
 
     .description {
