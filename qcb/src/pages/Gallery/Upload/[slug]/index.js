@@ -47,7 +47,7 @@ export default function Upload({ member, slug }) {
 
       console.log("member: ", member.email);
       console.log("filename: ", file.name);
-      await uploadImage(member.email, file.name);
+      //await uploadImage(member.email, file.name);
 
       await fetch(
         `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
