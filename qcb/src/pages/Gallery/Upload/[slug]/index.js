@@ -14,6 +14,9 @@ export default function Upload({ member, slug }) {
   const [uploading, setUploading] = useState(false);
 
   const router = useRouter();
+  const { data: session, status } = useSession();
+
+  const memberEmail = session.user.email;
 
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
@@ -45,9 +48,9 @@ export default function Upload({ member, slug }) {
       formData.append("folder", `qcb_website/gallery/${slug}`);
       formData.append("upload_preset", `qcb_uploads`);
 
-      console.log("member: ", member.email);
+      console.log("member: ", memberEmail);
       console.log("filename: ", file.name);
-      //await uploadImage(member.email, file.name);
+      await uploadImage(memberEmail, file.name);
 
       await fetch(
         `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
