@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "@components/Navbar";
 import styles from "./Upload.module.scss";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 import spinner from "@assets/icons/spinner.gif";
