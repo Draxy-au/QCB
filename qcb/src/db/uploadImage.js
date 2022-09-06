@@ -9,6 +9,9 @@ export async function uploadImage(memberEmail, filename) {
     },
   });
 
+  console.log("email", memberEmail);
+  console.log("filename", filename);
+
   const updatedGallery = await client.mutate({
     mutation: gql`
       mutation UpdateEventMembers {
