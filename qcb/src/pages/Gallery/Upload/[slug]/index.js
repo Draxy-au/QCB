@@ -45,6 +45,8 @@ export default function Upload({ member, slug }) {
       formData.append("folder", `qcb_website/gallery/${slug}`);
       formData.append("upload_preset", `qcb_uploads`);
 
+      console.log("member: ", member.email);
+      console.log("filename: ", file.name);
       await uploadImage(member.email, file.name);
 
       await fetch(
