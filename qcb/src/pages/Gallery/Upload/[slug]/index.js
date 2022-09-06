@@ -6,8 +6,9 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 import spinner from "@assets/icons/spinner.gif";
 import Image from "next/image";
+import { uploadImage } from "src/db/uploadImage";
 
-export default function Upload({ slug }) {
+export default function Upload({ member, slug }) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
   const [uploading, setUploading] = useState(false);
@@ -43,6 +44,8 @@ export default function Upload({ slug }) {
       formData.append("file", file);
       formData.append("folder", `qcb_website/gallery/${slug}`);
       formData.append("upload_preset", `qcb_uploads`);
+
+      await uploadImage(member.email, file.name);
 
       await fetch(
         `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
@@ -161,6 +164,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
+      member,
       slug,
     },
   };
