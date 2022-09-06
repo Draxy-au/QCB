@@ -14,13 +14,12 @@ export async function uploadImage(memberEmail, filename) {
       mutation UpdateEventMembers {
         createGalleryUpload(
           data: {
-            filename: "${filename}"            
+            filename: "${filename}"
             member: { connect: { email: "${memberEmail}" } }
           }
-          
-        ){
-    id
-  }
+        ) {
+          id
+        }
       }
     `,
   });
