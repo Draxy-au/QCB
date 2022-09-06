@@ -48,9 +48,7 @@ export default function Upload({ member, slug }) {
       formData.append("folder", `qcb_website/gallery/${slug}`);
       formData.append("upload_preset", `qcb_uploads`);
 
-      console.log("member: ", memberEmail);
-      console.log("filename: ", file.name);
-      await uploadImage(memberEmail, file.name);
+      await uploadImage(memberEmail, file.name, slug);
 
       await fetch(
         `https://api.cloudinary.com/v1_1/queenslandcampingbears/image/upload`,
